@@ -1,8 +1,9 @@
 
-
 const Header = () => {
     return (
-        <div></div>
+        <header className='header'>
+            <div>Todo List</div>
+        </header>
     )
 }
 

@@ -1,6 +1,9 @@
+
 const Footer = () => {
     return (
-        <div></div>
+        <footer>
+            <div>Designed by Michael Tagg</div>
+        </footer>
     )
 }
 
