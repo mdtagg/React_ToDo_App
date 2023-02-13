@@ -1,15 +1,13 @@
 
-import Header from "./components/Header"
-import Todos from "./components/Todos"
-import Footer from "./components/Footer"
+import TodoSection from "./components/TodoSection"
 
 function App() {
 
   return (
     <>
-      <Header />
-      <Todos />
-      <Footer />
+      <header className='header'>Todo List</header>
+      <TodoSection />
+      <footer>Designed by Michael Tagg</footer>
     </>
     
   )
