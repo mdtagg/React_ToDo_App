@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Container } from 'react-bootstrap';
 import ProjectTitle from './ProjectTitle';
 
 const ProjectsList = () => {
@@ -34,14 +35,14 @@ const ProjectsList = () => {
             <div className='projects-title'>Projects</div>
             {projects.map((project,index) => {
                 return (
-                <ProjectTitle key={index} title={project} />
+                    <ProjectTitle key={index} title={project} />
                 )
             })}
             {toggleShow && 
                 <Form onSubmit={handleOnSubmit}>
                     <Form.Control type='text' name='project-title' onChange={handleInput}/>
-                    <Button variant='success' type='submit'>Add</Button>
-                    <Button variant='danger'>Cancel</Button>
+                    <Button variant='success' type='submit' size='sm'>Add</Button>
+                    <Button variant='danger' size='sm'>Cancel</Button>
                 </Form>
             }
             {!toggleShow &&
