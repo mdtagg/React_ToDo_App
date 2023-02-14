@@ -6,7 +6,18 @@ import ProjectTitle from './ProjectTitle';
 import { v4 as uuidv4 } from 'uuid';
 
 const ProjectsList = () => {
-    const [projects, setProjects] = useState(['test','test two'])
+    const [projects, setProjects] = useState(() => {
+        return [
+            {
+                title: 'test',
+                id: uuidv4()
+            },
+            {
+                title:'test two',
+                id: uuidv4()
+            }
+        ]
+    })
     const [toggleShow, setToggleShow] = useState(false)
     const [projectTitle,setProjectTitle] = useState('')
 
@@ -27,11 +38,10 @@ const ProjectsList = () => {
 
     function handleInput(e) {
         const { value } = e.target
-        setProjectTitle(value)
-    }
-
-    function handleOnDelete(id) {
-        
+        setProjectTitle({
+            title:value,
+            id: uuidv4()
+        })
     }
 
     return (
@@ -39,7 +49,7 @@ const ProjectsList = () => {
             <div className='projects-title'>Projects</div>
             {projects.map((project,index) => {
                 return (
-                    <ProjectTitle id={uuidv4()} key={index} title={project} />
+                    <ProjectTitle setProjects={setProjects} projects={projects} id={project.id} key={index} title={project.title} />
                 )
             })}
             {toggleShow && 
