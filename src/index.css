@@ -64,9 +64,19 @@ footer {
   background-color:black;
   color:white;
   font-size:1.5rem;
-  /* padding:.25rem; */
   display:flex;
   justify-content: center;
   height:5vh;
+}
+
+.add-todo-container {
+  display:flex;
+  flex-direction: column;
+ gap:.5rem;
+}
+
+.add-todo-buttons {
+  display:flex;
+  gap:.25rem;
 }
 

@@ -1,5 +1,6 @@
 
 import TodoSection from "./components/TodoSection"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
