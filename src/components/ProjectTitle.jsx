@@ -14,20 +14,21 @@ const ProjectTitle = ({title,id,projects,setProjects}) => {
     }
 
     function handleOnDelete(id) {
-        const filteredProjects = projects.filter(item => item.id !== id)
-        setProjects(filteredProjects)
+        
+        setProjects((prevProjects) => {
+            let filteredProject = prevProjects.indexOf(prevProjects.filter(project => id === project.id))
+            console.log(filteredProject)
+        })
     }
 
-    function handleOnClick(id) {
-        const filteredProject = projects.filter(item => item.id === id)
-        // const filteredProjects = projects.filter(item => item.id !== id)
-        // console.log(filteredProject)
+    function handleOnClick(e) {
+   
         
-        console.log(projects)
+        // console.log(projects)
     }
 
     return (
-        <button className='project-button' onClick={() => handleOnClick(id)} onMouseEnter={handleEnter} onMouseLeave={handleExit}>
+        <button className='project-button' onClick={(e) => handleOnClick(e)} onMouseEnter={handleEnter} onMouseLeave={handleExit}>
             <img className='todo-icon' src='icons/todo-list.svg'></img>
                 {title}
             {toggle && 
