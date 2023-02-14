@@ -18,12 +18,24 @@ const ProjectTitle = ({title,id,projects,setProjects}) => {
         setProjects(filteredProjects)
     }
 
+    function handleOnClick(id) {
+        const filteredProject = projects.filter(item => item.id === id)
+        // const filteredProjects = projects.filter(item => item.id !== id)
+        // console.log(filteredProject)
+        
+        console.log(projects)
+    }
+
     return (
-            <button onMouseEnter={handleEnter} onMouseLeave={handleExit}>
-                <img className='todo-icon' src='icons/todo-list.svg'></img>
-                    {title}
-                {toggle && <div onClick={() => handleOnDelete(id)} className='delete-button'>x</div>}
-            </button>
+        <button className='project-button' onClick={() => handleOnClick(id)} onMouseEnter={handleEnter} onMouseLeave={handleExit}>
+            <img className='todo-icon' src='icons/todo-list.svg'></img>
+                {title}
+            {toggle && 
+            <div className='delete-button'>
+                <div onClick={() => handleOnDelete(id)}>x</div>
+            </div>
+            }
+        </button>
         )
 }
 
