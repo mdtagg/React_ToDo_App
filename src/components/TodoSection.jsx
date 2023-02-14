@@ -9,23 +9,24 @@ const TodoSection = () => {
         return [
             {
                 title: 'test',
-                id: uuidv4(),
-                reveal:false
+                id: uuidv4()
             },
             {
                 title:'test two',
-                id: uuidv4(),
-                reveal:false
+                id: uuidv4()
             }
         ]
     })
+
+    const [id,setId] = useState('')
+
     return (
         <main className='main'>
             <aside className='todo-sidebar'>
                 <UpcomingList/>
-                <ProjectsList projects={projects} setProjects={setProjects} />
+                <ProjectsList setId={setId} projects={projects} setProjects={setProjects} />
             </aside>
-            <TodoList projects={projects} />
+            <TodoList id={id} projects={projects} />
         </main>
     )
 }

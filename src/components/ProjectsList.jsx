@@ -5,19 +5,8 @@ import Form from 'react-bootstrap/Form';
 import ProjectTitle from './ProjectTitle';
 import { v4 as uuidv4 } from 'uuid';
 
-const ProjectsList = ({projects,setProjects}) => {
-    // const [projects, setProjects] = useState(() => {
-    //     return [
-    //         {
-    //             title: 'test',
-    //             id: uuidv4()
-    //         },
-    //         {
-    //             title:'test two',
-    //             id: uuidv4()
-    //         }
-    //     ]
-    // })
+const ProjectsList = ({projects,setProjects,setId}) => {
+    
     const [toggleShow, setToggleShow] = useState(false)
     const [projectTitle,setProjectTitle] = useState('')
 
@@ -49,7 +38,7 @@ const ProjectsList = ({projects,setProjects}) => {
             <div className='projects-title'>Projects</div>
             {projects.map((project,index) => {
                 return (
-                    <ProjectTitle setProjects={setProjects} projects={projects} id={project.id} key={index} title={project.title} />
+                    <ProjectTitle setId={setId} setProjects={setProjects} projects={projects} id={project.id} key={index} title={project.title} />
                 )
             })}
             {toggleShow && 

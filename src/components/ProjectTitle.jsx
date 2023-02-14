@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 
-const ProjectTitle = ({title,id,projects,setProjects}) => {
+const ProjectTitle = ({title,id,projects,setProjects,setId}) => {
 
     const [toggle,setToggle] = useState(false)
 
@@ -18,14 +18,12 @@ const ProjectTitle = ({title,id,projects,setProjects}) => {
         setProjects(filteredProjects)
     }
 
-    function handleOnClick(e) {
-   
-        
-        // console.log(projects)
+    function handleOnClick(id) {
+        setId(id)
     }
 
     return (
-        <button className='project-button' onClick={(e) => handleOnClick(e)} onMouseEnter={handleEnter} onMouseLeave={handleExit}>
+        <button className='project-button' onClick={() => handleOnClick(id)} onMouseEnter={handleEnter} onMouseLeave={handleExit}>
             <img className='todo-icon' src='icons/todo-list.svg'></img>
                 {title}
             {toggle && 
