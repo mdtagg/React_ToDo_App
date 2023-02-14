@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 
-const ProjectTitle = ({title}) => {
+const ProjectTitle = ({title,id}) => {
 
     const [toggle,setToggle] = useState(false)
 
@@ -17,7 +17,7 @@ const ProjectTitle = ({title}) => {
             <button onMouseEnter={handleEnter} onMouseLeave={handleExit}>
                 <img className='todo-icon' src='icons/todo-list.svg'></img>
                     {title}
-                {toggle && <div className='delete-button'>x</div>}
+                {toggle && <div onClick={() => handleDelete(id)} className='delete-button'>x</div>}
             </button>
         )
 }

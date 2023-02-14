@@ -1,9 +1,9 @@
 
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Container } from 'react-bootstrap';
 import ProjectTitle from './ProjectTitle';
+import { v4 as uuidv4 } from 'uuid';
 
 const ProjectsList = () => {
     const [projects, setProjects] = useState(['test','test two'])
@@ -30,12 +30,16 @@ const ProjectsList = () => {
         setProjectTitle(value)
     }
 
+    function handleOnDelete(id) {
+        
+    }
+
     return (
         <div className='sidebar-group' id='projects-list'>
             <div className='projects-title'>Projects</div>
             {projects.map((project,index) => {
                 return (
-                    <ProjectTitle key={index} title={project} />
+                    <ProjectTitle id={uuidv4()} key={index} title={project} />
                 )
             })}
             {toggleShow && 
