@@ -14,11 +14,8 @@ const ProjectTitle = ({title,id,projects,setProjects}) => {
     }
 
     function handleOnDelete(id) {
-        
-        setProjects((prevProjects) => {
-            let filteredProject = prevProjects.indexOf(prevProjects.filter(project => id === project.id))
-            console.log(filteredProject)
-        })
+        const filteredProjects = projects.filter(project => project.id !== id)
+        setProjects(filteredProjects)
     }
 
     function handleOnClick(e) {
