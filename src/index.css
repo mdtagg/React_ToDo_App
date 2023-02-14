@@ -46,6 +46,11 @@ button {
   border-radius: .25rem;
 }
 
+.projects-button {
+  display:flex;
+  align-items: center;
+}
+
 button:hover {
   background-color: rgba(0,0,0,0.3);
 }
@@ -72,11 +77,16 @@ footer {
 .add-todo-container {
   display:flex;
   flex-direction: column;
- gap:.5rem;
+  gap:.5rem;
 }
 
 .add-todo-buttons {
   display:flex;
   gap:.25rem;
+}
+
+.delete-button {
+  display:flex;
+  justify-content: flex-end;
 }
 

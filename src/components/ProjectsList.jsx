@@ -2,16 +2,10 @@
 import { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import ProjectTitle from './ProjectTitle';
 
 const ProjectsList = () => {
-    // <div className='add-todo-container'>
-    //             <input></input>
-    //             <div className='add-todo-buttons'>
-    //                 <Button variant='success' size='sm' type='submit' onSubmit={handleOnSubmit}>Add</Button>
-    //                 <Button variant='danger' size='sm'>Cancel</Button>
-    //             </div>
-    //         </div>
-    const [projects, setProjects] = useState([])
+    const [projects, setProjects] = useState(['test','test two'])
     const [toggleShow, setToggleShow] = useState(false)
     const [projectTitle,setProjectTitle] = useState('')
 
@@ -38,20 +32,9 @@ const ProjectsList = () => {
     return (
         <div className='sidebar-group' id='projects-list'>
             <div className='projects-title'>Projects</div>
-            <button>
-                <img className='todo-icon' src='icons/todo-list.svg'></img>
-                    test
-            </button>
-            <button>
-                <img className='todo-icon' src='icons/todo-list.svg'></img>
-                    test two
-            </button>
-            {projects.map(project => {
+            {projects.map((project,index) => {
                 return (
-                <button>
-                <img className='todo-icon' src='icons/todo-list.svg'></img>
-                    {project}
-                </button>
+                <ProjectTitle key={index} title={project} />
                 )
             })}
             {toggleShow && 
