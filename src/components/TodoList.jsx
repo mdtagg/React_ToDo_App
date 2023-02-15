@@ -1,7 +1,6 @@
 import { useState,useEffect } from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { v4 as uuidv4 } from 'uuid';
 
 const TodoList = ({projects,id,setProjects}) => {
 
@@ -34,8 +33,6 @@ const TodoList = ({projects,id,setProjects}) => {
                 }
             ]
         })
-
-        
     }
 
     useEffect(() => {
@@ -50,30 +47,27 @@ const TodoList = ({projects,id,setProjects}) => {
             }
         }))
     },[projectTodos])
-    // console.log(projects)
-    // console.log(projectTodos)
-    
 
     return (
         <>
-        {filteredProject && <div className='todo-list'>
+        {filteredProject && 
+        <div className='todo-list'>
             <div className='todo-title'>{filteredProject.title}</div>
             <div>{filteredProject.todo.map(todo => {
                 return (
                     <Form className='todo-form'>
                         <Form.Check type='checkbox'/>
                         <span className='title'>{todo.title}</span>
-                        <Button type='date'></Button>
+                        <input className='task-date' type='date'></input>
                         <div>x</div>
                     </Form>
                 )
-            })}</div>
-            {
-            !toggle && 
-            <div>
-                <button className='add-todo' onClick={handleOnClick}>Add Todo</button>
+            })}
             </div>
-            }
+            {!toggle && 
+            <div>
+                <button className='add-todo' onClick={handleOnClick}><img className='todo-icon' src='../icons/plus.svg'></img>Add Todo</button>
+            </div>}
             {toggle && 
             <Form onSubmit={(e) => handleOnSubmit(e)}>
                 <Form.Control type='text' name='todo-title' onChange={handleInput} />
