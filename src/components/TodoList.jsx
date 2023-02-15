@@ -19,7 +19,6 @@ const TodoList = ({projects,id,setProjects}) => {
         const { value } = e.target
         setTodoTitle(value)
         
-        
     }
 
     function handleOnSubmit(e) {
@@ -36,6 +35,10 @@ const TodoList = ({projects,id,setProjects}) => {
             ]
         })
 
+        
+    }
+
+    useEffect(() => {
         setProjects(projects.map(project => {
             if(project.id === id) {
                 return ({
@@ -45,11 +48,10 @@ const TodoList = ({projects,id,setProjects}) => {
             }else {
                 return project
             }
-            
         }))
-    }
+    },[projectTodos])
     // console.log(projects)
-    console.log(projectTodos)
+    // console.log(projectTodos)
     
 
     return (
