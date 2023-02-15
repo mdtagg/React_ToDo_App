@@ -5,18 +5,22 @@ import { useState } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
 const TodoSection = () => {
+     
     const [projects, setProjects] = useState(() => {
         return [
             {
                 title: 'test',
-                id: uuidv4()
+                id: uuidv4(),
+                todo:[]
             },
             {
                 title:'test two',
-                id: uuidv4()
+                id: uuidv4(),
+                todo:[]
             }
         ]
     })
+    // console.log(projects)
 
     const [id,setId] = useState('')
 
@@ -26,7 +30,7 @@ const TodoSection = () => {
                 <UpcomingList/>
                 <ProjectsList setId={setId} projects={projects} setProjects={setProjects} />
             </aside>
-            <TodoList id={id} projects={projects} />
+            <TodoList id={id} projects={projects} setProjects={setProjects} />
         </main>
     )
 }

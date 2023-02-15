@@ -91,3 +91,20 @@ footer {
   justify-content: flex-end;
 }
 
+.todo-list {
+  display:flex;
+  flex-direction: column;
+  width:50%;
+  align-items: center;
+  margin:auto;
+  border:1px solid black;
+}
+
+.todo-form {
+  display:flex;
+  border:1px solid black;
+}
+
+.title {
+  display:flex;
+}

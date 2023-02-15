@@ -29,7 +29,8 @@ const ProjectsList = ({projects,setProjects,setId}) => {
         const { value } = e.target
         setProjectTitle({
             title:value,
-            id: uuidv4()
+            id: uuidv4(),
+            todo:[]
         })
     }
 
