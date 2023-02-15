@@ -4,7 +4,7 @@ import TodoList from "./TodoList"
 import { useState,useEffect } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
-const TodoSection = () => {
+const Dashboard = () => {
      
     const [projects, setProjects] = useState(() => {
         return [
@@ -24,7 +24,6 @@ const TodoSection = () => {
     const [id,setId] = useState('')
 
     const [filteredProject] = projects.filter(project => project.id === id)
-    // console.log(filteredProject)
 
     useEffect(() => {
         setProjectTodos(filteredProject == undefined ? [] : filteredProject.todo)
@@ -41,4 +40,4 @@ const TodoSection = () => {
     )
 }
 
-export default TodoSection
+export default Dashboard

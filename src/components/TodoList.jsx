@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { v4 as uuidv4 } from 'uuid';
 
 const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos}) => {
 
@@ -27,6 +28,7 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos}) => {
                 ...prevTodos,
                 {
                     title:todoTitle,
+                    id:uuidv4(),
                     date:null
                 }
             ]
@@ -47,6 +49,12 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos}) => {
         
     },[projectTodos])
 
+    function handleOnDelete(e) {
+        const value = e.target.attributes.value.value
+        const filteredTodos = projectTodos.filter(todo => todo.id !== value )
+        setProjectTodos(filteredTodos)
+    }
+
     return (
         <>
         {filteredProject && 
@@ -58,7 +66,7 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos}) => {
                         <Form.Check type='checkbox'/>
                         <span className='title'>{todo.title}</span>
                         <input className='task-date' type='date'></input>
-                        <div>x</div>
+                        <div value={todo.id} className='delete-button' onClick={(e) => handleOnDelete(e)}>x</div>
                     </Form>
                 )
             })}

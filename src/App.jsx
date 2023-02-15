@@ -1,5 +1,5 @@
 
-import TodoSection from "./components/TodoSection"
+import Dashboard from "./components/Dashboard"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <header className='header'>Todo List</header>
-      <TodoSection />
+      <Dashboard />
       <footer>Designed by Michael Tagg</footer>
     </>
     
