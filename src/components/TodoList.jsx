@@ -2,11 +2,11 @@ import { useState,useEffect } from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-const TodoList = ({projects,id,setProjects}) => {
+const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos}) => {
 
     const [filteredProject] = projects.filter(project => project.id === id)
     const [todoTitle,setTodoTitle] = useState('')
-    const [projectTodos,setProjectTodos] = useState([])
+    // const [projectTodos,setProjectTodos] = useState([])
     const [toggle,setToggle] = useState(false)
 
     function handleOnClick() {
@@ -17,13 +17,11 @@ const TodoList = ({projects,id,setProjects}) => {
         e.preventDefault()
         const { value } = e.target
         setTodoTitle(value)
-        
     }
 
     function handleOnSubmit(e) {
         e.preventDefault()
         setToggle(false)
-
         setProjectTodos((prevTodos) => {
             return [
                 ...prevTodos,
@@ -46,6 +44,7 @@ const TodoList = ({projects,id,setProjects}) => {
                 return project
             }
         }))
+        
     },[projectTodos])
 
     return (
@@ -80,79 +79,4 @@ const TodoList = ({projects,id,setProjects}) => {
 }
 
 export default TodoList
-
-// onChange={handleInput}
-
-// onSubmit={handleOnSubmit}
-
-// const [filteredProject] = projects.filter(project => project.id === id)
-    // console.log(filteredProject)
-
- // const [todos,setTodos] = useState(() => projects.map(project => {
-    //     return ({
-    //         title:project.title,
-    //         id:project.id,
-    //         date:null,
-    //         todoList:[]
-    //     })
-    // }))
-
-    // const [todoList,setTodoList] = useState([])
-    // const [toggle,setToggle] = useState(false)
-    
-    // useEffect(() => {
-    //     setTodos((prevTodos) => {
-    //         return [
-    //             ...prevTodos,
-    //             projects[projects.length - 1]
-    //         ]
-    //     })
-    // },[projects])
-
-    // function handleOnSubmit(e) {
-    //     e.preventDefault()
-    //     setToggle(false)
-    //     setTodoList((prevTodos) => {
-    //         return ([
-    //             ...prevTodos,
-    //             todoTitle
-    //         ])
-    //     })
-    // }
-
-    // function handleOnClick() {
-    //     setToggle(true)
-    // }
-
-    // function handleInput(e) {
-    //     const { value } = e.target
-    //     setTodoTitle({
-    //         title:value,
-    //         id:uuidv4()
-    //     })
-    // }
-
-    // return (
-        // <>
-        //     {filteredTodo && <div className='todo-list'>
-        //         {/* <div className='todo-title'>{filteredTodo.title}</div> */}
-        //         {/* <div>{todoList.map(todo => {
-        //             return (
-        //                 <div>
-        //                     <button></button>
-        //                     <button></button>
-        //                     <button></button>
-        //                     <button></button>
-        //                 </div>
-        //             )
-        //         })}</div> */}
-        //         {!toggle && <button className='add-todo' onClick={handleOnClick}>Add Todo</button>}
-        //         {toggle && 
-        //         <Form onSubmit={handleOnSubmit}>
-        //             <Form.Control type='text' name='todo-title' onChange={handleInput}/>
-        //             <Button variant='success' type='submit' size='sm'>Add</Button>
-        //             <Button variant='danger' size='sm'>Cancel</Button>
-        //         </Form>}
-        //     </div>}
-        // </>
 

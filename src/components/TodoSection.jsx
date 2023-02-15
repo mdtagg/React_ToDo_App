@@ -1,7 +1,7 @@
 import ProjectsList from "./ProjectsList"
 import UpcomingList from "./UpcomingList"
 import TodoList from "./TodoList"
-import { useState } from "react"
+import { useState,useEffect } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
 const TodoSection = () => {
@@ -20,9 +20,15 @@ const TodoSection = () => {
             }
         ]
     })
-    // console.log(projects)
-
+    const [projectTodos,setProjectTodos] = useState([])
     const [id,setId] = useState('')
+
+    const [filteredProject] = projects.filter(project => project.id === id)
+    // console.log(filteredProject)
+
+    useEffect(() => {
+        setProjectTodos(filteredProject == undefined ? [] : filteredProject.todo)
+    },[id])
 
     return (
         <main className='main'>
@@ -30,7 +36,7 @@ const TodoSection = () => {
                 <UpcomingList/>
                 <ProjectsList setId={setId} projects={projects} setProjects={setProjects} />
             </aside>
-            <TodoList id={id} projects={projects} setProjects={setProjects} />
+            <TodoList projectTodos={projectTodos} setProjectTodos={setProjectTodos} id={id} projects={projects} setProjects={setProjects} />
         </main>
     )
 }
