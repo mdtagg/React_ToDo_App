@@ -13,7 +13,7 @@ const UpcomingList = (props) => {
     return (
         <div className='sidebar-group'>
             <div className='projects-title'>Upcoming</div>
-            <button value='today' onClick={(e) => handleOnClick(e)}>
+            <button value='Today' onClick={(e) => handleOnClick(e)}>
                 <img className='todo-icon' src='icons/inbox.svg'></img>
                     Today
             </button>

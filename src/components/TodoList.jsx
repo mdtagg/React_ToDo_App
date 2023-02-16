@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { v4 as uuidv4 } from 'uuid';
 import UpcomingList from "./UpcomingList";
 
-const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,date,setDate,upcomings}) => {
+const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,setDates,upcomings}) => {
 
     const [filteredProject] = projects.filter(project => project.id === id)
     const [todoTitle,setTodoTitle] = useState('')
@@ -35,6 +35,27 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,date,set
         })
     }
 
+    function handleOnDelete(e) {
+        const value = e.target.attributes.value.value
+        const filteredTodos = projectTodos.filter(todo => todo.id !== value )
+        setProjectTodos(filteredTodos)
+    }
+
+    function handleDateChange(e) {
+        const dateValue = e.target.valueAsDate
+        setDates(dateValue)
+        setProjects(projects.map(project => {
+            if(project.id === id) {
+                return ({
+                    ...project,
+                    date:dateValue
+                })
+            }else {
+                return project
+            }
+        }))
+    }
+
     useEffect(() => {
         setProjects(projects.map(project => {
             if(project.id === id) {
@@ -49,28 +70,21 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,date,set
         
     },[projectTodos])
 
-    function handleOnDelete(e) {
-        const value = e.target.attributes.value.value
-        const filteredTodos = projectTodos.filter(todo => todo.id !== value )
-        setProjectTodos(filteredTodos)
-    }
-
-    function handleDateChange(e) {
-        const dateValue = e.target.valueAsDate
-        setProjects(projects.map(project => {
-            if(project.id === id) {
-                return ({
-                    ...project,
-                    date:dateValue
-                })
-            }else {
-                return project
-            }
-        }))
-    }
+    // useEffect(() => {
+    //     setProjectTodos((prevTodos) => {
+    //         return prevTodos.map(todo => {
+    //             if(todo)
+    //         })
+    //     })
+    // },[dates])
 
     return (
         <>
+        {upcomings.reveal &&
+        <div>
+            <div>{upcomings.title}</div>
+        </div>
+        }
         {!upcomings.reveal && 
         <div className='todo-list'>
             <div className='todo-title'>{filteredProject.title}</div>
@@ -79,7 +93,8 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,date,set
                     <Form className='todo-form'>
                         <Form.Check type='checkbox'/>
                         <span className='title'>{todo.title}</span>
-                        <input className='task-date' type='date' onChange={(e) => handleDateChange(e)}></input>
+                        {todo.date === null && <input className='task-date' type='date' onChange={(e) => handleDateChange(e)}></input>}
+                        {todo.date !== null && <button>{todo.date}</button>}
                         <div value={todo.id} className='delete-button' onClick={(e) => handleOnDelete(e)}>x</div>
                     </Form>
                 )
