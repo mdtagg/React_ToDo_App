@@ -21,9 +21,9 @@ const Dashboard = () => {
         ]
     })
     const [projectTodos,setProjectTodos] = useState([])
-    console.log(projectTodos)
     const [id,setId] = useState('')
     const [dates,setDates] = useState([])
+    console.log(dates)
     const [upcomings,setUpcomings] = useState({
         title:'',
         reveal:true

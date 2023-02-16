@@ -38,12 +38,13 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
     function handleOnDelete(e) {
         const value = e.target.attributes.value.value
         const filteredTodos = projectTodos.filter(todo => todo.id !== value )
+        const filteredDates = dates.filter(date => date.id !== value)
         setProjectTodos(filteredTodos)
+        setDates(filteredDates)
     }
 
     function handleDateChange(e) {
         const dateValue = e.target.value
-        console.log(dateValue)
         const dateId = e.target.dataset.id
         setDates((prevDates) => {
             return [
@@ -54,21 +55,9 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
                 }
             ]
         })
-        // console.log(e)
-        // setProjectTodos(projectTodos.map(todo => {
-        //     if(todo.id === id) {
-        //         return ({
-        //             ...project,
-        //             date:dateValue
-        //         })
-        //     }else {
-        //         return project
-        //     }
-        // }))
     }
 
     useEffect(() => {
-        // console.log(projects)
         setProjects(projects.map(project => {
             if(project.id === id) {
                 return ({
@@ -83,10 +72,8 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
     },[projectTodos])
 
     useEffect(() => {
-        console.log(dates)
         let currentDate = dates[dates.length - 1]
         dates.length ? currentDate = currentDate.id : ''
-       
         setProjectTodos((prevTodos) => {
            return prevTodos.map(todo => {
                 if(currentDate === todo.id) {
@@ -123,11 +110,11 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
             <div className='todo-title'>{filteredProject.title}</div>
             <div>{filteredProject.todo.map(todo => {
                 return (
-                    <Form className='todo-form'>
+                    <Form key={uuidv4()} className='todo-form'>
                         <Form.Check type='checkbox'/>
                         <span className='title'>{todo.title}</span>
                         {todo.date === null && <input data-id={todo.id} className='task-date' type='date' onChange={(e) => handleDateChange(e)}></input>}
-                        {todo.date !== null && <button>{todo.date}</button>}
+                        {todo.date !== null && <div className='date-button'>{todo.date}</div>}
                         <div value={todo.id} className='delete-button' onClick={(e) => handleOnDelete(e)}>x</div>
                     </Form>
                 )
