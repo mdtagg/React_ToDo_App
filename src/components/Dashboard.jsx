@@ -21,6 +21,7 @@ const Dashboard = () => {
         ]
     })
     const [projectTodos,setProjectTodos] = useState([])
+    console.log(projectTodos)
     const [id,setId] = useState('')
     const [dates,setDates] = useState([])
     const [upcomings,setUpcomings] = useState({
@@ -32,8 +33,6 @@ const Dashboard = () => {
     useEffect(() => {
         setProjectTodos(filteredProject == undefined ? [] : filteredProject.todo)
     },[id])
-
-    console.log(projects)
 
     return (
         <main className='main'>

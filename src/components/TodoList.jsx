@@ -42,21 +42,33 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
     }
 
     function handleDateChange(e) {
-        const dateValue = e.target.valueAsDate
-        setDates(dateValue)
-        setProjects(projects.map(project => {
-            if(project.id === id) {
-                return ({
-                    ...project,
-                    date:dateValue
-                })
-            }else {
-                return project
-            }
-        }))
+        const dateValue = e.target.value
+        console.log(dateValue)
+        const dateId = e.target.dataset.id
+        setDates((prevDates) => {
+            return [
+                ...prevDates,
+                {
+                    date:dateValue,
+                    id:dateId
+                }
+            ]
+        })
+        // console.log(e)
+        // setProjectTodos(projectTodos.map(todo => {
+        //     if(todo.id === id) {
+        //         return ({
+        //             ...project,
+        //             date:dateValue
+        //         })
+        //     }else {
+        //         return project
+        //     }
+        // }))
     }
 
     useEffect(() => {
+        // console.log(projects)
         setProjects(projects.map(project => {
             if(project.id === id) {
                 return ({
@@ -70,13 +82,26 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
         
     },[projectTodos])
 
-    // useEffect(() => {
-    //     setProjectTodos((prevTodos) => {
-    //         return prevTodos.map(todo => {
-    //             if(todo)
-    //         })
-    //     })
-    // },[dates])
+    useEffect(() => {
+        console.log(dates)
+        let currentDate = dates[dates.length - 1]
+        dates.length ? currentDate = currentDate.id : ''
+       
+        setProjectTodos((prevTodos) => {
+           return prevTodos.map(todo => {
+                if(currentDate === todo.id) {
+                    let newDate = dates[dates.length - 1]
+                    const { date } = newDate
+                    return ({
+                        ...todo,
+                        date: date
+                    })
+                }else {
+                    return todo
+                }
+            })
+        })
+    },[dates])
 
     return (
         <>
@@ -101,7 +126,7 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
                     <Form className='todo-form'>
                         <Form.Check type='checkbox'/>
                         <span className='title'>{todo.title}</span>
-                        {todo.date === null && <input className='task-date' type='date' onChange={(e) => handleDateChange(e)}></input>}
+                        {todo.date === null && <input data-id={todo.id} className='task-date' type='date' onChange={(e) => handleDateChange(e)}></input>}
                         {todo.date !== null && <button>{todo.date}</button>}
                         <div value={todo.id} className='delete-button' onClick={(e) => handleOnDelete(e)}>x</div>
                     </Form>
