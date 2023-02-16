@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 
-const ProjectTitle = ({title,id,projects,setProjects,setId}) => {
+const ProjectTitle = ({title,id,projects,setProjects,setId,setUpcomings}) => {
 
     const [toggle,setToggle] = useState(false)
 
@@ -20,6 +20,12 @@ const ProjectTitle = ({title,id,projects,setProjects,setId}) => {
 
     function handleOnClick(id) {
         setId(id)
+        setUpcomings((prevUpcomings) => {
+            return {
+                ...prevUpcomings,
+                reveal:false
+            }
+        })
     }
 
     return (

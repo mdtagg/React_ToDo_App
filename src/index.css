@@ -122,5 +122,5 @@ footer {
   border-radius:2px;
   border:1px solid black;
   background-color:rgb(255, 255, 255);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
