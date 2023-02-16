@@ -93,9 +93,22 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
     return (
         <>
         {upcomings.reveal &&
-        <div>
-            <div>{upcomings.title}</div>
-
+        <div className='todo-list'>
+            <div className='todo-title'>{upcomings.title}</div>
+            {projects.map(project => {
+                return project.todo.map(todo => {
+                    let todoDate = todo.date.split('-')
+                    let currentDate = new Date().toString().split(' ').slice(1,4)
+                    if(parseInt(todoDate[2]) ===  parseInt(currentDate[1])) {
+                        return (
+                            <Form className='todo-form'>
+                                <Form.Check type='checkbox'/>
+                                <span>{todo.title + ` (${project.title})`}</span>
+                            </Form>
+                        )
+                    }
+                })
+            })}
             {upcomings.title === 'Today' &&
             <div>
                 <button className='add-todo' onClick={handleOnClick}>
