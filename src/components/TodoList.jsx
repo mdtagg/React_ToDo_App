@@ -83,6 +83,14 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
         {upcomings.reveal &&
         <div>
             <div>{upcomings.title}</div>
+
+            {upcomings.title === 'Today' &&
+            <div>
+                <button className='add-todo' onClick={handleOnClick}>
+                    <img className='todo-icon' src='../icons/plus.svg'></img>
+                    Add Task
+                </button>
+            </div>}
         </div>
         }
         {!upcomings.reveal && 
@@ -102,13 +110,18 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
             </div>
             {!toggle && 
             <div>
-                <button className='add-todo' onClick={handleOnClick}><img className='todo-icon' src='../icons/plus.svg'></img>Add Todo</button>
+                <button className='add-todo' onClick={handleOnClick}>
+                    <img className='todo-icon' src='../icons/plus.svg'></img>
+                    Add Task
+                    </button>
             </div>}
             {toggle && 
-            <Form onSubmit={(e) => handleOnSubmit(e)}>
+            <Form className='input-form' onSubmit={(e) => handleOnSubmit(e)}>
                 <Form.Control type='text' name='todo-title' onChange={handleInput} />
-                <Button variant='success' type='submit' size='sm'>Add</Button>
-                <Button variant='danger' size='sm' onClick={() => setToggle(false)}>Cancel</Button>
+                <div className='button-group'>
+                    <Button variant='success' type='submit' size='sm'>Add</Button>
+                    <Button variant='danger' size='sm' onClick={() => setToggle(false)}>Cancel</Button>
+                </div>
             </Form>}
         </div>}
         </>

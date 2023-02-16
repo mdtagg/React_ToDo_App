@@ -45,8 +45,10 @@ const ProjectsList = ({projects,setProjects,setId,setUpcomings}) => {
             {toggleShow && 
                 <Form onSubmit={handleOnSubmit}>
                     <Form.Control type='text' name='project-title' onChange={handleInput}/>
-                    <Button variant='success' type='submit' size='sm'>Add</Button>
-                    <Button variant='danger' size='sm'>Cancel</Button>
+                    <div className='button-group'>
+                        <Button variant='success' type='submit' size='sm'>Add</Button>
+                        <Button variant='danger' size='sm'>Cancel</Button>
+                    </div>
                 </Form>
             }
             {!toggleShow &&
