@@ -99,11 +99,13 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
         {upcomings.reveal &&
         <div className='todo-list'>
             <div className='todo-title'>{upcomings.title}</div>
-            {currentUpcoming.map(date => {
+            {currentUpcoming.map(upcoming => {
+                console.log(upcoming)
                 return (
                     <Form className='todo-form'>
                         <Form.Check type='checkbox' />
-                        <div>{date.date}</div>
+                        
+                        <div>{upcoming.date}</div>
                     </Form>
                 )
             })}

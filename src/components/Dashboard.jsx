@@ -39,7 +39,7 @@ const Dashboard = () => {
     return (
         <main className='main'>
             <aside className='todo-sidebar'>
-                <UpcomingList setCurrentUpcoming={setCurrentUpcoming} projects={projects} setProjects={setProjects} dates={dates} upcomings={upcomings} setUpcomings={setUpcomings} />
+                <UpcomingList projectTodos={projectTodos} setCurrentUpcoming={setCurrentUpcoming} projects={projects} setProjects={setProjects} dates={dates} upcomings={upcomings} setUpcomings={setUpcomings} />
                 <ProjectsList setUpcomings={setUpcomings} setId={setId} projects={projects} setProjects={setProjects} />
             </aside>
             <TodoList currentUpcoming={currentUpcoming} upcomings={upcomings} dates={dates} setDates={setDates} projectTodos={projectTodos} setProjectTodos={setProjectTodos} id={id} projects={projects} setProjects={setProjects} />

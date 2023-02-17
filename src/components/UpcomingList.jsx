@@ -9,18 +9,25 @@ const UpcomingList = (props) => {
         const currentDate = new Date()
         const parseMonth = currentDate.getMonth() + 1
         const parseCurrentDate = currentDate.toString().split(' ').slice(1,4)
-        // console.log({currentDate,parseMonth,parseCurrentDate})
         
         let today = []
         let week = []
         let month = []
+        let todoTitles = []
 
         props.dates.map(todoDate => {
+            props.projects.forEach(project => {
+                let projectTitle = project.title
+                project.todo.forEach(todo => {
+                    if(todo.id === todoDate.id) {
+                        todoTitles.push(`${todo.title} (${projectTitle})`)
+                    }
+                })
+            })
             const { date } = todoDate
             const dateStr = date.split('/')
             const day = parseInt(dateStr[1])
             const currentDay = parseInt(parseCurrentDate[1])
-            // console.log(parseInt(parseCurrentDate[1])
 
             if(day === parseInt(parseCurrentDate[1]) && parseMonth !== parseInt(parseCurrentDate[0])) {
                 today.push(todoDate)
@@ -34,18 +41,20 @@ const UpcomingList = (props) => {
                 month.push(todoDate)
             }
         })
+        // console.log(todoTitles)
         // console.log({today,week,month})
         props.setUpcomings({
             title:timeSection,
             reveal:true,
             today:today.length ? today : '',
             week:week.length ? week : '',
-            month:month.length ? month : ''
+            month:month.length ? month : '',
+            todoTitles:todoTitles.length ? todoTitles : ''
         })
     }
 
     useEffect(() => {
-        // console.log(props.upcomings.title)
+        
         switch(props.upcomings.title) {
             case 'Today':
                 props.setCurrentUpcoming(props.upcomings.today)
