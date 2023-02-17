@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { v4 as uuidv4 } from 'uuid';
 import UpcomingList from "./UpcomingList";
 
-const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,setDates,upcomings}) => {
+const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,setDates,upcomings,currentUpcoming}) => {
 
     const [filteredProject] = projects.filter(project => project.id === id)
     const [todoTitle,setTodoTitle] = useState('')
@@ -44,14 +44,19 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
     }
 
     function handleDateChange(e) {
-        const dateValue = e.target.value
-        const dateId = e.target.dataset.id
+
+        const todoId = e.target.dataset.id
+        let dateValue = e.target.value.split('-')
+        const temp = dateValue.shift()
+        dateValue.push(temp)
+        dateValue = dateValue.join('/')
+    
         setDates((prevDates) => {
             return [
                 ...prevDates,
                 {
                     date:dateValue,
-                    id:dateId
+                    id:todoId
                 }
             ]
         })
@@ -73,12 +78,11 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
 
     useEffect(() => {
         let currentDate = dates[dates.length - 1]
-        dates.length ? currentDate = currentDate.id : ''
+        if(!dates.length) return
         setProjectTodos((prevTodos) => {
            return prevTodos.map(todo => {
-                if(currentDate === todo.id) {
-                    let newDate = dates[dates.length - 1]
-                    const { date } = newDate
+                if(currentDate.id === todo.id) {
+                    const { date } = currentDate
                     return ({
                         ...todo,
                         date: date
@@ -95,19 +99,13 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
         {upcomings.reveal &&
         <div className='todo-list'>
             <div className='todo-title'>{upcomings.title}</div>
-            {projects.map(project => {
-                return project.todo.map(todo => {
-                    let todoDate = todo.date.split('-')
-                    let currentDate = new Date().toString().split(' ').slice(1,4)
-                    if(parseInt(todoDate[2]) ===  parseInt(currentDate[1])) {
-                        return (
-                            <Form className='todo-form'>
-                                <Form.Check type='checkbox'/>
-                                <span>{todo.title + ` (${project.title})`}</span>
-                            </Form>
-                        )
-                    }
-                })
+            {currentUpcoming.map(date => {
+                return (
+                    <Form className='todo-form'>
+                        <Form.Check type='checkbox' />
+                        <div>{date.date}</div>
+                    </Form>
+                )
             })}
             {upcomings.title === 'Today' &&
             <div>

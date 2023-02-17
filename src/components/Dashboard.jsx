@@ -21,14 +21,14 @@ const Dashboard = () => {
         ]
     })
     const [projectTodos,setProjectTodos] = useState([])
-    // console.log(projectTodos)
     const [id,setId] = useState('')
     const [dates,setDates] = useState([])
     const [upcomings,setUpcomings] = useState({
         title:'',
         reveal:true
     })
-    // console.log(dates)
+    const [currentUpcoming,setCurrentUpcoming] = useState([])
+    // console.log(currentUpcoming)
 
     const [filteredProject] = projects.filter(project => project.id === id)
 
@@ -39,10 +39,10 @@ const Dashboard = () => {
     return (
         <main className='main'>
             <aside className='todo-sidebar'>
-                <UpcomingList dates={dates} upcomings={upcomings} setUpcomings={setUpcomings} />
+                <UpcomingList setCurrentUpcoming={setCurrentUpcoming} projects={projects} setProjects={setProjects} dates={dates} upcomings={upcomings} setUpcomings={setUpcomings} />
                 <ProjectsList setUpcomings={setUpcomings} setId={setId} projects={projects} setProjects={setProjects} />
             </aside>
-            <TodoList upcomings={upcomings} dates={dates} setDates={setDates} projectTodos={projectTodos} setProjectTodos={setProjectTodos} id={id} projects={projects} setProjects={setProjects} />
+            <TodoList currentUpcoming={currentUpcoming} upcomings={upcomings} dates={dates} setDates={setDates} projectTodos={projectTodos} setProjectTodos={setProjectTodos} id={id} projects={projects} setProjects={setProjects} />
         </main>
     )
 }
