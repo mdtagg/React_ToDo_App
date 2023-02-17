@@ -2,7 +2,6 @@ import { useState,useEffect } from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { v4 as uuidv4 } from 'uuid';
-import UpcomingList from "./UpcomingList";
 
 const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,setDates,upcomings,currentUpcoming}) => {
 

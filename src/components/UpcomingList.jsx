@@ -1,5 +1,5 @@
 
-import { useState,useEffect } from 'react'
+import { useEffect } from 'react'
 
 const UpcomingList = (props) => {
     
@@ -41,8 +41,7 @@ const UpcomingList = (props) => {
                 month.push(todoDate)
             }
         })
-        // console.log(todoTitles)
-        // console.log({today,week,month})
+     
         props.setUpcomings({
             title:timeSection,
             reveal:true,
