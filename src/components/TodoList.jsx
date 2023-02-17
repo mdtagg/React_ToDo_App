@@ -97,18 +97,17 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
         <>
         {upcomings.reveal &&
         <div className='todo-list'>
-            <div className='todo-title'>{upcomings.title}</div>
+            <div className='todo-title'>{upcomings.title.length ? upcomings.title : 'Today'}</div>
             {currentUpcoming.map(upcoming => {
                 console.log(upcoming)
                 return (
                     <Form className='todo-form'>
                         <Form.Check type='checkbox' />
-                        
                         <div>{upcoming.date}</div>
                     </Form>
                 )
             })}
-            {upcomings.title === 'Today' &&
+            {(upcomings.title === 'Today' || upcomings.title === '') &&
             <div>
                 <button className='add-todo' onClick={handleOnClick}>
                     <img className='todo-icon' src='../icons/plus.svg'></img>
@@ -117,6 +116,7 @@ const TodoList = ({projects,id,setProjects,projectTodos,setProjectTodos,dates,se
             </div>}
         </div>
         }
+
         {!upcomings.reveal && 
         <div className='todo-list'>
             <div className='todo-title'>{filteredProject.title}</div>

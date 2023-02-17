@@ -58,7 +58,8 @@ const Dashboard = () => {
                 setDates={setDates} 
                 projectTodos={projectTodos} 
                 setProjectTodos={setProjectTodos} 
-                id={id} projects={projects} 
+                id={id} 
+                projects={projects} 
                 setProjects={setProjects} 
             />
         </main>
