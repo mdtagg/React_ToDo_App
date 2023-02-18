@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 
-const ProjectTitle = ({title,id,setProjectId,projects,setProjects,setUpcomings}) => {
+const ProjectTitle = ({title,id,setProjectId,projects,setProjects}) => {
     //title and id are attributes of each project, the rest are pieces of state
 
     //Toggle state in this section is responsible for changing the display of the delete button on each of the project folders when 
@@ -27,15 +27,10 @@ const ProjectTitle = ({title,id,setProjectId,projects,setProjects,setUpcomings})
         setProjects(filteredProjects)
     }
 
-    //when a project is clicked in the sidebar, the projectId is set to the id of the project that was clicked. 
+    //when a project is clicked in the sidebar, the projectId is set to the id of the project that was clicked. The current project
+    //id has the name id to differetiate from the stateful projectId that is used in other components. 
     function handleOnClick(id) {
         setProjectId(id)
-        setUpcomings((prevUpcomings) => {
-            return {
-                ...prevUpcomings,
-                reveal:false
-            }
-        })
     }
 
     //Each project button is rendered with a project list image and a delete button if it is being hovered over. 

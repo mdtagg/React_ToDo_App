@@ -6,38 +6,58 @@ import { v4 as uuidv4 } from 'uuid';
 
 const Dashboard = () => {
      
-    //projects state is initialized lazy with two placeholder projects 
     const [projects, setProjects] = useState(() => {
         
         return [
             {
                 title: 'test',
+                type: 'project',
                 id: uuidv4(),
                 todo:[]
             },
             {
                 title:'test two',
+                type:'project',
                 id: uuidv4(),
                 todo:[]
+            },
+            {
+                title:'Today',
+                type: 'upcoming',
+                img: 'icons/inbox.svg',
+                id: uuidv4(),
+                todo: [],
+                dates: []
+            },
+            {
+                title: 'This Week',
+                type: 'upcoming',
+                img:'icons/today.svg',
+                id: uuidv4(),
+                todo:[],
+                dates: []
+            },
+            {
+                title: 'This Month',
+                type:'upcoming',
+                img:'icons/week.svg',
+                id:uuidv4(),
+                todo:[],
+                dates:[]
             }
         ]
     })
-
-    //the projectId state is used to track which project tab is currently pressed
+    // console.log({projects})
     const [projectId,setProjectId] = useState('')
-
     const [projectTodos,setProjectTodos] = useState([])
+    // console.log({projectTodos})
     const [dates,setDates] = useState([])
-    const [upcomings,setUpcomings] = useState({
-        title:'',
-        reveal:true
-    })
-    const [currentUpcoming,setCurrentUpcoming] = useState([])
     const [filteredProject] = projects.filter(project => project.id === projectId)
 
     useEffect(() => {
-        setProjectTodos(filteredProject == undefined ? [] : filteredProject.todo)
+        setProjectTodos(projectId === '' ? [] : filteredProject.todo)
     },[projectId])
+   
 
     //Here we are rendering the sidebar on the left side of the main section and the todo section which displays all the todos in 
     //both the upcomings and projects sections
@@ -45,22 +65,16 @@ const Dashboard = () => {
         <main className='main'>
             <aside className='todo-sidebar'>
                 <UpcomingList 
-                    setCurrentUpcoming={setCurrentUpcoming} 
                     projects={projects} 
-                    dates={dates} 
-                    upcomings={upcomings} 
-                    setUpcomings={setUpcomings} 
+                    setProjectId={setProjectId}
                 />
                 <ProjectsList 
-                    setUpcomings={setUpcomings} 
                     setProjectId={setProjectId} 
                     projects={projects} 
                     setProjects={setProjects} 
                 />
             </aside>
             <TodoList 
-                currentUpcoming={currentUpcoming} 
-                upcomings={upcomings} 
                 dates={dates} 
                 setDates={setDates} 
                 projectTodos={projectTodos} 
@@ -68,9 +82,17 @@ const Dashboard = () => {
                 projectId={projectId} 
                 projects={projects} 
                 setProjects={setProjects} 
+                filteredProject={filteredProject}
             />
         </main>
     )
 }
 
 export default Dashboard
+
+// const [upcomings,setUpcomings] = useState({
+    //     title:'',
+    //     reveal:true
+    // })
+    // const [currentUpcoming,setCurrentUpcoming] = useState([])
+

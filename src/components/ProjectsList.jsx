@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import ProjectTitle from './ProjectTitle';
 import { v4 as uuidv4 } from 'uuid';
 
-const ProjectsList = ({projects,setProjects,setProjectId,setUpcomings}) => {
+const ProjectsList = ({projects,setProjects,setProjectId}) => {
     
     //toggle show toggles the add new project form and add new project button 
     const [toggleShow, setToggleShow] = useState(false)
@@ -38,6 +38,7 @@ const ProjectsList = ({projects,setProjects,setProjectId,setUpcomings}) => {
         const { value } = e.target
         setProjectTitle({
             title:value,
+            type:'project',
             id: uuidv4(),
             todo:[]
         })
@@ -49,9 +50,9 @@ const ProjectsList = ({projects,setProjects,setProjectId,setUpcomings}) => {
         <div className='sidebar-group' id='projects-list'>
             <div className='projects-title'>Projects</div>
             {projects.map(project => {
+                if(project.type === 'project') {
                 return (
                     <ProjectTitle 
-                        setUpcomings={setUpcomings} 
                         setProjectId={setProjectId} 
                         setProjects={setProjects} 
                         projects={projects} 
@@ -60,6 +61,7 @@ const ProjectsList = ({projects,setProjects,setProjectId,setUpcomings}) => {
                         id={project.id}
                     />
                 )
+                }
             })}
             {toggleShow && 
                 <Form onSubmit={handleOnSubmit}>
