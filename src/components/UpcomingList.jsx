@@ -15,6 +15,7 @@ const UpcomingList = (props) => {
         let month = []
         let todoTitles = []
 
+        //temporal library
         props.dates.map(todoDate => {
             props.projects.forEach(project => {
                 let projectTitle = project.title
