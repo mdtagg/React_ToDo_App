@@ -97,20 +97,25 @@ const Dashboard = ({completed}) => {
             {completed && 
             <div className='completed-container'>
                 <table>
-                    <tr>
-                        <th>Project</th>
-                        <th>Task Name</th>
-                        <th>Date Completed</th>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Project</th>
+                            <th>Task Name</th>
+                            <th>Date Completed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     {completedList.map(item => {
                         return (
-                            <tr>
+                            <tr key={uuidv4()}>
                                 <td>{item.projectTitle}</td>
                                 <td>{item.title}</td>
                                 <td>{item.date}</td>
                             </tr>
                         )
                     })}
+                    </tbody>
+                    
                 </table>
             </div>
             }

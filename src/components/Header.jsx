@@ -3,7 +3,9 @@ import { useState } from "react"
 const Header = (props) => {
 
     const handleClick = () => {
-        props.setCompleted(true)
+        props.setCompleted((prevState) => {
+            return !prevState
+        })
     }
 
     return (
