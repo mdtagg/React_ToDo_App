@@ -7,6 +7,13 @@ const UpcomingList = (props) => {
     const handleClick = (e) => {
         const filteredUpcomingTab = e.target.dataset.id
         props.setProjectId(filteredUpcomingTab)
+        let dates = []
+        props.projects.forEach(project => {
+            project.todo.forEach(todo => {
+                dates.push(todo.date)
+            })
+        })
+        props.setDates(dates)
     }
     return (
         <div className='sidebar-group'>

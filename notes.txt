@@ -1,2 +1,5 @@
 
--date buttons need to stay the date selected and be editable 
+BUGS 
+
+-the filtered project map in the todo section does not work when a project is deleted because the filtered 
+project then becomes undefined, which has no map function 

@@ -49,14 +49,19 @@ const Dashboard = () => {
     })
     // console.log({projects})
     const [projectId,setProjectId] = useState('')
+    // console.log({projectId})
     const [projectTodos,setProjectTodos] = useState([])
     // console.log({projectTodos})
     const [dates,setDates] = useState([])
+    // console.log({dates})
     const [filteredProject] = projects.filter(project => project.id === projectId)
+    console.log(filteredProject)
 
     useEffect(() => {
-        setProjectTodos(projectId === '' ? [] : filteredProject.todo)
+        setProjectTodos((projectId === '' || filteredProject == undefined) ? [] : filteredProject.todo)
     },[projectId])
+
+    // console.log({filteredProject,projectId})
    
 
     //Here we are rendering the sidebar on the left side of the main section and the todo section which displays all the todos in 
@@ -67,6 +72,8 @@ const Dashboard = () => {
                 <UpcomingList 
                     projects={projects} 
                     setProjectId={setProjectId}
+                    dates={dates}
+                    setDates={setDates}
                 />
                 <ProjectsList 
                     setProjectId={setProjectId} 

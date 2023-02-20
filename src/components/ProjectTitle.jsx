@@ -25,6 +25,7 @@ const ProjectTitle = ({title,id,setProjectId,projects,setProjects}) => {
         const deleteId = e.target.dataset.id
         const filteredProjects = projects.filter(project => project.id !== deleteId)
         setProjects(filteredProjects)
+        setProjectId('')
     }
 
     //when a project is clicked in the sidebar, the projectId is set to the id of the project that was clicked. The current project

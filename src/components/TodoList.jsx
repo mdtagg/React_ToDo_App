@@ -5,16 +5,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,dates,setDates,projectId,filteredProject}) => {
 
-    //filteredProject is used to determine if a project tab has been clicked and if so which project todos to render 
-    // const [filteredProject] = projects.filter(project => project.id === projectId)
-
-    //toggle is used to change the display of the add task form and add task button 
     const [toggleForm,setToggleForm] = useState(false)
-
-    //the todo title state is used to track the input of the add task form 
     const [todoTitle,setTodoTitle] = useState('')
     
-    //when the add task button is clicked toggle state is changed which renders the add task form
     function handleOnClick() {
         setToggleForm(true)
     }
@@ -94,9 +87,7 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,dates,setDa
                 return (
                     <Form key={uuidv4()} className='todo-form'>
                         <Form.Check type='checkbox'/>
-                        <span className='title'>
-                            {todo.title}
-                        </span>
+                        <span className='title'>{todo.title}</span>
                         {todo.date === null && 
                             <input 
                                 data-id={todo.id} 
@@ -131,10 +122,26 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,dates,setDa
             </div>}
             {toggleForm && 
             <Form className='input-form' onSubmit={(e) => handleOnSubmit(e)}>
-                <Form.Control type='text' name='todo-title' onChange={handleInput} />
+                <Form.Control 
+                    type='text' 
+                    name='todo-title' 
+                    onChange={handleInput} 
+                />
                 <div className='button-group'>
-                    <Button variant='success' type='submit' size='sm'>Add</Button>
-                    <Button variant='danger' size='sm' onClick={() => setToggleForm(false)}>Cancel</Button>
+                    <Button 
+                        variant='success' 
+                        type='submit' 
+                        size='sm'
+                    >
+                        Add
+                    </Button>
+                    <Button 
+                        variant='danger' 
+                        size='sm' 
+                        onClick={() => setToggleForm(false)}
+                    >
+                        Cancel
+                    </Button>
                 </div>
             </Form>}
         </div>}
