@@ -6,10 +6,27 @@
 
 .header {
   background-color: black;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
   color:white;
   font-size:2.5rem;
-  padding:1.25rem;
+  padding:2rem;
   height:15vh;
+}
+
+.completed-tasks-button {
+  font-size:1.25rem;
+  border:1px solid white;
+  background-color: rgb(209, 209, 209);
+  color:black;
+  display:flex;
+  align-items: center;
+}
+
+.completed-tasks-button:hover {
+  background-color: rgba(255,255,255,0.5);
+  color:white;
 }
 
 .main {
@@ -127,7 +144,6 @@ footer {
   border-radius:2px;
   border:1px solid black;
   background-color:rgb(255, 255, 255);
-  /* cursor: pointer; */
 }
 
 .date-button {
@@ -137,4 +153,9 @@ footer {
   border-radius: 2px;
   text-align: center;
   cursor:pointer;
+}
+
+.default {
+  font-size:2rem;
+  margin:auto;
 }

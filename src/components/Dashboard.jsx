@@ -47,13 +47,15 @@ const Dashboard = () => {
             }
         ]
     })
-    console.log({projects})
+    // console.log({projects})
     const [projectId,setProjectId] = useState('')
     // console.log({projectId})
     const [projectTodos,setProjectTodos] = useState([])
     // console.log({projectTodos})
     const [dates,setDates] = useState([])
     // console.log({dates})
+    const [completed,setCompleted] = useState([])
+
     const [filteredProject] = projects.filter(project => project.id === projectId)
     // console.log(filteredProject)
 
@@ -83,14 +85,14 @@ const Dashboard = () => {
                 />
             </aside>
             <TodoList 
-                dates={dates} 
-                setDates={setDates} 
                 projectTodos={projectTodos} 
                 setProjectTodos={setProjectTodos} 
                 projectId={projectId} 
                 projects={projects} 
                 setProjects={setProjects} 
                 filteredProject={filteredProject}
+                completed={completed}
+                setCompleted={setCompleted}
             />
         </main>
     )
@@ -98,9 +100,4 @@ const Dashboard = () => {
 
 export default Dashboard
 
-// const [upcomings,setUpcomings] = useState({
-    //     title:'',
-    //     reveal:true
-    // })
-    // const [currentUpcoming,setCurrentUpcoming] = useState([])
 

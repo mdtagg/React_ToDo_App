@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { v4 as uuidv4 } from 'uuid';
 
-const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,dates,setDates,projectId,filteredProject}) => {
+const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,filteredProject}) => {
 
     const [toggleForm,setToggleForm] = useState(false)
     const [todoTitle,setTodoTitle] = useState('')
@@ -37,9 +37,7 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,dates,setDa
         filteredProject = ''
         const value = e.target.attributes.value.value
         const filteredTodos = projectTodos.filter(todo => todo.id !== value )
-        const filteredDates = dates.filter(date => date.id !== value)
         setProjectTodos(filteredTodos)
-        setDates(filteredDates)
     }
 
     function handleDateChange(e) {
@@ -78,16 +76,31 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,dates,setDa
         
     },[projectTodos])
 
+    const handleCheckbox = () => {
+
+    }
+
     return (
         <>
+        {!filteredProject && projectId === '' &&
+        <div className='default'>
+            Nothing due yet! Please add more tasks to a project
+        </div>}
+
         {filteredProject &&  
         <div className='todo-list'>
             <div className='todo-title'>{filteredProject.title}</div>
+            {
+            !filteredProject.todo.length && filteredProject.type === 'upcoming' &&
+            <div className='default'>
+                Nothing Due
+            </div>
+            }
             <div>{filteredProject.todo.map(todo => {
                 return (
                     <Form key={uuidv4()} className='todo-form'>
-                        <Form.Check type='checkbox'/>
-                        <span className='title'>{todo.title}</span>
+                        <Form.Check type='checkbox' onClick={handleCheckbox} />
+                        <div className='title'>{todo.title}</div>
                         {todo.date === null && 
                             <input 
                                 data-id={todo.id} 
@@ -113,7 +126,7 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,dates,setDa
                 )
             })}
             </div>
-            {!toggleForm && 
+            {!toggleForm && filteredProject.type !== 'upcoming' &&
             <div>
                 <button className='add-todo' onClick={handleOnClick}>
                     <img className='todo-icon' src='../icons/plus.svg'></img>
