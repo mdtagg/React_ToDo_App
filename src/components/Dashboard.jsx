@@ -47,7 +47,7 @@ const Dashboard = () => {
             }
         ]
     })
-    // console.log({projects})
+    console.log({projects})
     const [projectId,setProjectId] = useState('')
     // console.log({projectId})
     const [projectTodos,setProjectTodos] = useState([])
@@ -55,7 +55,7 @@ const Dashboard = () => {
     const [dates,setDates] = useState([])
     // console.log({dates})
     const [filteredProject] = projects.filter(project => project.id === projectId)
-    console.log(filteredProject)
+    // console.log(filteredProject)
 
     useEffect(() => {
         setProjectTodos((projectId === '' || filteredProject == undefined) ? [] : filteredProject.todo)
@@ -74,6 +74,7 @@ const Dashboard = () => {
                     setProjectId={setProjectId}
                     dates={dates}
                     setDates={setDates}
+                    setProjects={setProjects}
                 />
                 <ProjectsList 
                     setProjectId={setProjectId} 
