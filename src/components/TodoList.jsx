@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { v4 as uuidv4 } from 'uuid';
 
-const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,filteredProject}) => {
+const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,filteredProject,setCompletedList}) => {
 
     const [toggleForm,setToggleForm] = useState(false)
     const [todoTitle,setTodoTitle] = useState('')
@@ -34,8 +34,8 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
     }
 
     function handleOnDelete(e) {
-        filteredProject = ''
-        const value = e.target.attributes.value.value
+        // filteredProject = ''
+        const value = e.target.dataset.id
         const filteredTodos = projectTodos.filter(todo => todo.id !== value )
         setProjectTodos(filteredTodos)
     }
@@ -76,8 +76,18 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
         
     },[projectTodos])
 
-    const handleCheckbox = () => {
-
+    const handleCheckbox = (e) => {
+        const taskId = e.target.dataset.id
+        const [filteredTodo] = filteredProject.todo.filter(todo => taskId === todo.id)
+        filteredTodo.projectTitle = filteredProject.title
+        console.log({filteredTodo})
+        setCompletedList((prevList) => {
+            return [
+                ...prevList,
+                filteredTodo
+            ]
+        })
+        handleOnDelete(e)
     }
 
     return (
@@ -99,7 +109,11 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
             <div>{filteredProject.todo.map(todo => {
                 return (
                     <Form key={uuidv4()} className='todo-form'>
-                        <Form.Check type='checkbox' onClick={handleCheckbox} />
+                        <Form.Check 
+                            data-id={todo.id}
+                            type='checkbox' 
+                            onClick={(e) => handleCheckbox(e)} 
+                        />
                         <div className='title'>{todo.title}</div>
                         {todo.date === null && 
                             <input 
@@ -116,7 +130,7 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
                             </div>
                         }
                         <div 
-                            value={todo.id} 
+                            data-id={todo.id} 
                             className='delete-button' 
                             onClick={(e) => handleOnDelete(e)}
                         >

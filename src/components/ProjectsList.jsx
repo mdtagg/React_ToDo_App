@@ -5,7 +5,7 @@ import Form from 'react-bootstrap/Form';
 import ProjectTitle from './ProjectTitle';
 import { v4 as uuidv4 } from 'uuid';
 
-const ProjectsList = ({projects,setProjects,setProjectId}) => {
+const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
     
     //toggle show toggles the add new project form and add new project button 
     const [toggleShow, setToggleShow] = useState(false)
@@ -59,6 +59,7 @@ const ProjectsList = ({projects,setProjects,setProjectId}) => {
                         key={uuidv4()} 
                         title={project.title} 
                         id={project.id}
+                        filteredProject={filteredProject}
                     />
                 )
                 }

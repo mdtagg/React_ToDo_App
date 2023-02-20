@@ -1,7 +1,7 @@
 
 import { useState } from 'react'
 
-const ProjectTitle = ({title,id,setProjectId,projects,setProjects}) => {
+const ProjectTitle = ({title,id,setProjectId,projects,setProjects,filteredProject}) => {
     //title and id are attributes of each project, the rest are pieces of state
 
     //Toggle state in this section is responsible for changing the display of the delete button on each of the project folders when 
@@ -22,6 +22,7 @@ const ProjectTitle = ({title,id,setProjectId,projects,setProjects}) => {
     //when the delete x is pressed the projects are filtered to all projects whose id does not match the id of the project with the 
     //delete button that has been pressed. The projects state is then set to those filtered projects. 
     function handleOnDelete(e) {
+        filteredProject = ''
         const deleteId = e.target.dataset.id
         const filteredProjects = projects.filter(project => project.id !== deleteId)
         setProjects(filteredProjects)

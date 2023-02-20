@@ -1,21 +1,17 @@
 
+import Header from "./components/Header";
 import Dashboard from "./components/Dashboard"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from "react";
 
 function App() {
 
+  const [completed,setCompleted] = useState(false)
+
   return (
     <>
-      <header className='header'>
-        <div>Todo List</div>
-        <div>
-          <button className='completed-tasks-button'>
-            <div><img className='todo-icon' src='./icons/check.svg'></img></div>
-            <div>View Completed Tasks</div>
-          </button>
-        </div>
-      </header>
-      <Dashboard />
+      <Header completed={completed} setCompleted={setCompleted} />
+      <Dashboard completed={completed} />
       <footer>Designed by Michael Tagg</footer>
     </>
     

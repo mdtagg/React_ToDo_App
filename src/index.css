@@ -29,6 +29,18 @@
   color:white;
 }
 
+.completed-container {
+  min-height: 80vh;
+  display:flex;
+  flex-direction: column;
+  padding:4rem;
+}
+
+table,tr,td,th {
+  border:1px solid black;
+  text-align: center;
+}
+
 .main {
   display:flex;
   min-height:80vh;
@@ -70,8 +82,7 @@ button {
   cursor: pointer;
 }
 
-button:hover,
-button:focus {
+button:hover {
   background-color: rgba(0,0,0,0.3);
 }
 

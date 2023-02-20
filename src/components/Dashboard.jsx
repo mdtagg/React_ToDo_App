@@ -4,8 +4,8 @@ import TodoList from "./TodoList"
 import { useState,useEffect } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
-const Dashboard = () => {
-     
+const Dashboard = ({completed}) => {
+    
     const [projects, setProjects] = useState(() => {
         
         return [
@@ -47,17 +47,13 @@ const Dashboard = () => {
             }
         ]
     })
-    // console.log({projects})
     const [projectId,setProjectId] = useState('')
-    // console.log({projectId})
     const [projectTodos,setProjectTodos] = useState([])
-    // console.log({projectTodos})
     const [dates,setDates] = useState([])
-    // console.log({dates})
-    const [completed,setCompleted] = useState([])
+    const [completedList,setCompletedList] = useState([])
+    console.log(completedList)
 
     const [filteredProject] = projects.filter(project => project.id === projectId)
-    // console.log(filteredProject)
 
     useEffect(() => {
         setProjectTodos((projectId === '' || filteredProject == undefined) ? [] : filteredProject.todo)
@@ -69,6 +65,8 @@ const Dashboard = () => {
     //Here we are rendering the sidebar on the left side of the main section and the todo section which displays all the todos in 
     //both the upcomings and projects sections
     return (
+        <>
+        {!completed && 
         <main className='main'>
             <aside className='todo-sidebar'>
                 <UpcomingList 
@@ -82,6 +80,7 @@ const Dashboard = () => {
                     setProjectId={setProjectId} 
                     projects={projects} 
                     setProjects={setProjects} 
+                    filteredProject={filteredProject}
                 />
             </aside>
             <TodoList 
@@ -91,10 +90,31 @@ const Dashboard = () => {
                 projects={projects} 
                 setProjects={setProjects} 
                 filteredProject={filteredProject}
-                completed={completed}
-                setCompleted={setCompleted}
+                setCompletedList={setCompletedList}
             />
-        </main>
+            </main>
+            }
+            {completed && 
+            <div className='completed-container'>
+                <table>
+                    <tr>
+                        <th>Project</th>
+                        <th>Task Name</th>
+                        <th>Date Completed</th>
+                    </tr>
+                    {completedList.map(item => {
+                        return (
+                            <tr>
+                                <td>{item.projectTitle}</td>
+                                <td>{item.title}</td>
+                                <td>{item.date}</td>
+                            </tr>
+                        )
+                    })}
+                </table>
+            </div>
+            }
+        </>
     )
 }
 
