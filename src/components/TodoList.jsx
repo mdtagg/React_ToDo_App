@@ -1,5 +1,4 @@
 import { useState,useEffect } from "react"
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -34,7 +33,6 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
     }
 
     function handleOnDelete(e) {
-        // filteredProject = ''
         const value = e.target.dataset.id
         const filteredTodos = projectTodos.filter(todo => todo.id !== value )
         setProjectTodos(filteredTodos)
@@ -157,13 +155,6 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
                 <div className='button-group'>
                     <button className='add-button' type='submit'>Add</button>
                     <button className='cancel-button' onClick={() => setToggleForm(false)}>Cancel</button>
-                    {/* <Button 
-                        variant='danger' 
-                        size='sm' 
-                        onClick={() => setToggleForm(false)}
-                    >
-                        Cancel
-                    </Button> */}
                 </div>
             </Form>}
         </div>}
