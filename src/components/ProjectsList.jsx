@@ -1,6 +1,5 @@
 
 import { useState } from 'react'
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import ProjectTitle from './ProjectTitle';
 import { v4 as uuidv4 } from 'uuid';
@@ -72,8 +71,8 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
                         onChange={handleInput}
                     />
                     <div className='button-group'>
-                        <Button variant='success' type='submit' size='sm'>Add</Button>
-                        <Button variant='danger' size='sm'>Cancel</Button>
+                        <button className='add-button' type='submit'>Add</button>
+                        <button className='cancel-button' onClick={() => setToggleShow(false)}>Cancel</button>
                     </div>
                 </Form>
             }

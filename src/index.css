@@ -89,6 +89,24 @@ button:hover {
 .button-group {
   display:flex;
   gap:.5rem;
+  color:white;
+  font-size:1rem;
+  font-weight:600;
+  margin-top:.5rem;
+}
+
+.add-button {
+  display:flex;
+  width:50%;
+  background-color: rgb(28, 236, 52);
+  justify-content: center;
+}
+
+.cancel-button {
+  display:flex;
+  width:50%;
+  background-color: red;
+  justify-content: center;
 }
 
 .todo-icon {
@@ -170,3 +188,4 @@ footer {
   font-size:2rem;
   margin:auto;
 }
+

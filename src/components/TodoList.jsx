@@ -155,20 +155,15 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
                     onChange={handleInput} 
                 />
                 <div className='button-group'>
-                    <Button 
-                        variant='success' 
-                        type='submit' 
-                        size='sm'
-                    >
-                        Add
-                    </Button>
-                    <Button 
+                    <button className='add-button' type='submit'>Add</button>
+                    <button className='cancel-button' onClick={() => setToggleForm(false)}>Cancel</button>
+                    {/* <Button 
                         variant='danger' 
                         size='sm' 
                         onClick={() => setToggleForm(false)}
                     >
                         Cancel
-                    </Button>
+                    </Button> */}
                 </div>
             </Form>}
         </div>}
