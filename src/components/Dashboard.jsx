@@ -1,14 +1,15 @@
 import ProjectsList from "./ProjectsList"
 import UpcomingList from "./UpcomingList"
 import TodoList from "./TodoList"
+import UseLocalStorage from "../hooks/UseLocalStorage"
 import { useState,useEffect } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
 const Dashboard = ({completed}) => {
     
-    const [projects, setProjects] = useState(() => {
+    const [projects, setProjects] = UseLocalStorage('projects',
         
-        return [
+        [
             {
                 title: 'test',
                 type: 'project',
@@ -46,24 +47,19 @@ const Dashboard = ({completed}) => {
                 dates:[]
             }
         ]
-    })
+    )
+    
     const [projectId,setProjectId] = useState('')
     const [projectTodos,setProjectTodos] = useState([])
     const [dates,setDates] = useState([])
     const [completedList,setCompletedList] = useState([])
-    console.log(completedList)
 
     const [filteredProject] = projects.filter(project => project.id === projectId)
 
     useEffect(() => {
         setProjectTodos((projectId === '' || filteredProject == undefined) ? [] : filteredProject.todo)
     },[projectId])
-
-    // console.log({filteredProject,projectId})
    
-
-    //Here we are rendering the sidebar on the left side of the main section and the todo section which displays all the todos in 
-    //both the upcomings and projects sections
     return (
         <>
         {!completed && 

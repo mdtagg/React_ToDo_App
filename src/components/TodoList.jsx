@@ -127,13 +127,14 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
                                 {todo.date}
                             </div>
                         }
+                        {filteredProject.type !== 'upcoming' && 
                         <div 
                             data-id={todo.id} 
                             className='delete-button' 
                             onClick={(e) => handleOnDelete(e)}
                         >
                             x
-                        </div>
+                        </div>}
                     </Form>
                 )
             })}
