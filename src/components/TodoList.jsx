@@ -107,6 +107,7 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
             <div>{filteredProject.todo.map(todo => {
                 return (
                     <Form key={uuidv4()} className='todo-form'>
+                    
                         <Form.Check 
                             data-id={todo.id}
                             type='checkbox' 
@@ -135,6 +136,7 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
                         >
                             x
                         </div>}
+                        
                     </Form>
                 )
             })}
@@ -165,46 +167,3 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
 
 export default TodoList
 
-    
-
-    
-
-    // useEffect(() => {
-    //     let currentDate = dates[dates.length - 1]
-    //     if(!dates.length) return
-    //     setProjectTodos((prevTodos) => {
-    //        return prevTodos.map(todo => {
-    //             if(currentDate.id === todo.id) {
-    //                 const { date } = currentDate
-    //                 return ({
-    //                     ...todo,
-    //                     date: date
-    //                 })
-    //             }else {
-    //                 return todo
-    //             }
-    //         })
-    //     })
-    // },[dates])
-
-{/* {upcomings.reveal &&
-        <div className='todo-list'>
-            <div className='todo-title'>{upcomings.title.length ? upcomings.title : 'Today'}</div>
-            {currentUpcoming.map(upcoming => {
-                console.log(upcoming)
-                return (
-                    <Form className='todo-form'>
-                        <Form.Check type='checkbox' />
-                        <div>{upcoming.date}</div>
-                    </Form>
-                )
-            })}
-            {(upcomings.title === 'Today' || upcomings.title === '') &&
-            <div>
-                <button className='add-todo' onClick={handleOnClick}>
-                    <img className='todo-icon' src='../icons/plus.svg'></img>
-                    Add Task
-                </button>
-            </div>}
-        </div>
-        } */}

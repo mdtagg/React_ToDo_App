@@ -48,11 +48,11 @@ const Dashboard = ({completed}) => {
             }
         ]
     )
-    
+
     const [projectId,setProjectId] = useState('')
     const [projectTodos,setProjectTodos] = useState([])
     const [dates,setDates] = useState([])
-    const [completedList,setCompletedList] = useState([])
+    const [completedList,setCompletedList] = UseLocalStorage('completedTasks',[])
 
     const [filteredProject] = projects.filter(project => project.id === projectId)
 
