@@ -1,5 +1,7 @@
 
-import { useState,useContext } from 'react'
+import { useState } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInbox } from '@fortawesome/free-solid-svg-icons'
 
 const ProjectTab = ({title,id,setProjectId,projects,setProjects,filteredProject}) => {
 

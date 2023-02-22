@@ -13,11 +13,12 @@
   font-size:2.5rem;
   padding:2rem;
   height:15vh;
+  border-bottom:2px solid black;
 }
 
 .completed-tasks-button {
   font-size:1.25rem;
-  border:1px solid white;
+  border:2px solid black;
   background-color: rgb(209, 209, 209);
   color:black;
   display:flex;
@@ -55,10 +56,17 @@ table,tr,td,th {
   font-weight:500;
   padding:1.5rem;
   gap:2rem;
+  border-right:2px solid black;
 }
 
 .sidebar-group {
-  gap:10px;
+  gap:1rem;
+}
+
+.tab-group {
+  display:flex;
+  flex-direction: column;
+  gap:.5rem;
 }
 
 button {
@@ -126,6 +134,7 @@ footer {
   align-items: center;
   justify-content: center;
   height:5vh;
+  border-top:2px solid black;
 }
 
 .add-todo-container {
@@ -138,12 +147,6 @@ footer {
   display:flex;
   gap:.25rem;
 }
-
-/* .todo-title {
-  font-weight:700;
-  font-size:1.5rem;
-  padding-bottom:1rem;
-} */
 
 .todo-list {
   width:50%;

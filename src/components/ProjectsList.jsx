@@ -44,6 +44,7 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
     return (
         <div className='sidebar-group' id='projects-list'>
             <div className='title'>Projects</div>
+            <div className='tab-group'>
             {projects.map(project => {
                 if(project.type === 'project') {
                 return (
@@ -76,8 +77,8 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
             <button onClick={handleOnClick}>
                 <img className='todo-icon' src='icons/plus.svg'></img>
                 Add Project
-            </button>
-            }
+            </button>}
+            </div>
         </div>
     )
 }
