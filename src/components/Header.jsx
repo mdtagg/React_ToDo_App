@@ -12,8 +12,16 @@ const Header = (props) => {
             <div>Todo List</div>
             <div>
                 <button onClick={handleClick} className='completed-tasks-button'>
-                    <img className='todo-icon' src='./icons/check.svg'></img>
-                    View Completed Tasks
+                    {!props.completed && 
+                    <>
+                        <img className='todo-icon' src='./icons/check.svg'></img>
+                        View Completed Tasks
+                    </>}
+                    {props.completed &&
+                    <>
+                        <img className='todo-icon' src='./icons/back.svg' ></img>
+                        Back To Menu
+                    </>}
                 </button>
             </div>
         </header>

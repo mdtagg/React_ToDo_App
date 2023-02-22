@@ -6,17 +6,17 @@ const ProjectTab = ({title,id,setProjectId,projects,setProjects,filteredProject}
     //Responsible for changing the display of the delete button on hover
     const [toggle,setToggle] = useState(false)
 
-    function handleEnter() {
+    const handleEnter = () => {
         setToggle(true)
     }
 
-    function handleExit() {
+    const handleExit = () => {
         setToggle(false)
     }
 
     //when a project is deleted filtered project is set to empty so that todos are not rendered from
     //an undefined project. The project to be deleted is then filtered and projects state is set 
-    function handleOnDelete(e) {
+    const handleOnDelete = (e) => {
         filteredProject = ''
         const deleteId = e.target.dataset.id
         const filteredProjects = projects.filter(project => project.id !== deleteId)
@@ -25,7 +25,7 @@ const ProjectTab = ({title,id,setProjectId,projects,setProjects,filteredProject}
     }
 
     //responsible for setting the id of last clicked project tab 
-    function handleOnClick(id) {
+    const handleOnClick = (id) => {
         setProjectId(id)
     }
 

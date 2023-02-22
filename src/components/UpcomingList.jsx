@@ -20,7 +20,8 @@ const UpcomingList = (props) => {
     }
 
     //the following function is responsible for sorting the todos of each proejct into one of three
-    //due categories, Today, This Week and This Month. 
+    //due categories, Today, This Week and This Month. Temporal library is used to simplify date
+    //parsing
     useEffect(() => {
         const currentDate = Temporal.Now.plainDateTimeISO()
         let currentDay = currentDate.day
@@ -33,18 +34,20 @@ const UpcomingList = (props) => {
         props.projects.forEach(project => {
             if(project.type === 'project') {
                 project.todo.forEach(todo => {
-                    let todoDateInfo = todo.date.split('/')
-                    let todoDay = parseInt(todoDateInfo[1])
-                    let todoMonth = parseInt(todoDateInfo[0])
-                    if(todoDay === currentDay) {
-                        todayTasks.push(todo)
-                    }
-                    if(todoDay >= currentWeekRange.weekStart && 
-                        todoDay <= currentWeekRange.weekEnd) {
-                        weekTasks.push(todo)
+                    if(todo.date !== null) {
+                        let todoDateInfo = todo.date.split('/')
+                        let todoDay = parseInt(todoDateInfo[1])
+                        let todoMonth = parseInt(todoDateInfo[0])
+                        if(todoDay === currentDay) {
+                            todayTasks.push(todo)
                         }
-                    if(todoMonth === currentMonth) {
-                        monthTasks.push(todo)
+                        if(todoDay >= currentWeekRange.weekStart && 
+                            todoDay <= currentWeekRange.weekEnd) {
+                            weekTasks.push(todo)
+                            }
+                        if(todoMonth === currentMonth) {
+                            monthTasks.push(todo)
+                        }
                     }
                 })
             }

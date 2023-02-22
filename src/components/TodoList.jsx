@@ -9,18 +9,18 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
     //stores the add task input 
     const [todoTitle,setTodoTitle] = useState('')
     
-    function handleOnClick() {
+    const handleOnClick = () => {
         setToggleForm(true)
     }
 
-    function handleInput(e) {
+    const handleInput = (e) => {
         e.preventDefault()
         const { value } = e.target
         setTodoTitle(value)
     }
 
     //adds todos to the project todo state
-    function handleOnSubmit(e) {
+    const handleOnSubmit = (e) => {
         e.preventDefault()
         setToggleForm(false)
         setProjectTodos((prevTodos) => {
@@ -51,7 +51,7 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
     },[projectTodos])
 
 
-    function handleOnDelete(e) {
+    const handleOnDelete = (e) => {
         const value = e.target.dataset.id
         const filteredTodos = projectTodos.filter(todo => todo.id !== value )
         setProjectTodos(filteredTodos)
@@ -107,16 +107,13 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
         {filteredProject &&  
         <div className='todo-list'>
             <div className='todo-title'>{filteredProject.title}</div>
-            {
-            !filteredProject.todo.length && filteredProject.type === 'upcoming' &&
+            {!filteredProject.todo.length && filteredProject.type === 'upcoming' &&
             <div className='default'>
                 Nothing Due
-            </div>
-            }
+            </div>}
             <div>{filteredProject.todo.map(todo => {
                 return (
                     <Form key={uuidv4()} className='todo-form'>
-                    
                         <Form.Check 
                             data-id={todo.id}
                             type='checkbox' 

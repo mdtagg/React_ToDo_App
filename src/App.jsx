@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <Header setCompleted={setCompleted} />
+      <Header completed={completed} setCompleted={setCompleted} />
       <Dashboard completed={completed} />
       <footer>Developed by Michael Tagg 
           

@@ -12,13 +12,13 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
     //used to capture the input in the project form 
     const [projectTitle,setProjectTitle] = useState('')
 
-    function handleOnClick() {
+    const handleOnClick = () => {
         setAddButton(true)
     }
 
     //when the form is submitted, toggle is set back to false and the projects state is set 
     //to all the projects in the projects state and a new project 
-    function handleOnSubmit(e) {
+    const handleOnSubmit = (e) => {
         e.preventDefault()
         setToggleAddButton(false)
         setProjects((prevProjects) => {
@@ -30,7 +30,7 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
     }
     
     //Each time there is input in the add project form, the state of projectTitle is updated
-    function handleInput(e) {
+    const handleInput = (e) => {
         const { value } = e.target
         setProjectTitle({
             title:value,
