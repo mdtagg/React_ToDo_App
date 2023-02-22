@@ -6,11 +6,12 @@ import { useState } from "react";
 
 function App() {
 
+  //toggles between rendering the completed tasks and tasks list UI
   const [completed,setCompleted] = useState(false)
 
   return (
     <>
-      <Header completed={completed} setCompleted={setCompleted} />
+      <Header setCompleted={setCompleted} />
       <Dashboard completed={completed} />
       <footer>Developed by Michael Tagg 
           

@@ -5,6 +5,8 @@ import { Temporal } from '@js-temporal/polyfill';
 
 const UpcomingList = (props) => {
 
+    //The upcoming tab id is set as the current projectId. All of the dates associated with each 
+    //todo in each project are set as the state of dates
     const handleClick = (e) => {
         const filteredUpcomingTab = e.target.dataset.id
         props.setProjectId(filteredUpcomingTab)
@@ -17,6 +19,8 @@ const UpcomingList = (props) => {
         props.setDates(dates)
     }
 
+    //the following function is responsible for sorting the todos of each proejct into one of three
+    //due categories, Today, This Week and This Month. 
     useEffect(() => {
         const currentDate = Temporal.Now.plainDateTimeISO()
         let currentDay = currentDate.day
@@ -66,6 +70,7 @@ const UpcomingList = (props) => {
         
     },[props.dates])
 
+    //responsible for determining the start and end of the week from the current date
     const parseWeek = (currentDate,currentDay) => {
         let weekStart = currentDate.dayOfWeek
         weekStart !== 1 ? 

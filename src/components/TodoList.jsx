@@ -4,7 +4,9 @@ import { v4 as uuidv4 } from 'uuid';
 
 const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,filteredProject,setCompletedList}) => {
 
+    //toggles between add task form and button 
     const [toggleForm,setToggleForm] = useState(false)
+    //stores the add task input 
     const [todoTitle,setTodoTitle] = useState('')
     
     function handleOnClick() {
@@ -17,6 +19,7 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
         setTodoTitle(value)
     }
 
+    //adds todos to the project todo state
     function handleOnSubmit(e) {
         e.preventDefault()
         setToggleForm(false)
@@ -32,12 +35,31 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
         })
     }
 
+    //adds the todos to the todo property in the associated project 
+    useEffect(() => {
+        setProjects(projects.map(project => {
+            if(project.id === projectId) {
+                return ({
+                    ...project,
+                    todo: projectTodos
+            })
+            }else {
+                return project
+            }
+        }))
+        
+    },[projectTodos])
+
+
     function handleOnDelete(e) {
         const value = e.target.dataset.id
         const filteredTodos = projectTodos.filter(todo => todo.id !== value )
         setProjectTodos(filteredTodos)
     }
 
+    //changes the date output to a format easier for parsing. When a date is entered its is then 
+    //added to the associated todo which triggers a change in the projectTodos state. This then 
+    //triggers an update to the projects state
     function handleDateChange(e) {
 
         const dateId = e.target.dataset.id
@@ -60,25 +82,12 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
         })
     }
 
-    useEffect(() => {
-        setProjects(projects.map(project => {
-            if(project.id === projectId) {
-                return ({
-                    ...project,
-                    todo: projectTodos
-            })
-            }else {
-                return project
-            }
-        }))
-        
-    },[projectTodos])
-
+    //the project title is added to the filtered todo and the completed state is updated to that 
+    //filtered todo
     const handleCheckbox = (e) => {
         const taskId = e.target.dataset.id
         const [filteredTodo] = filteredProject.todo.filter(todo => taskId === todo.id)
         filteredTodo.projectTitle = filteredProject.title
-        console.log({filteredTodo})
         setCompletedList((prevList) => {
             return [
                 ...prevList,

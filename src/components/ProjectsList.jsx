@@ -1,27 +1,26 @@
 
 import { useState } from 'react'
 import Form from 'react-bootstrap/Form';
-import ProjectTitle from './ProjectTitle';
+import ProjectTab from './ProjectTab';
 import { v4 as uuidv4 } from 'uuid';
 
 const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
     
-    //toggle show toggles the add new project form and add new project button 
-    const [toggleShow, setToggleShow] = useState(false)
+    //toggles between the add new project form and button 
+    const [toggleAddButton, setToggleAddButton] = useState(false)
 
-    //project title is used to capture the input in the project form for later use 
+    //used to capture the input in the project form 
     const [projectTitle,setProjectTitle] = useState('')
 
-    //when add project is clicked toggle is set to true, which displays the input form 
     function handleOnClick() {
-        setToggleShow(true)
+        setAddButton(true)
     }
 
-    //when the form is submitted toggle is set back to false and projects is set to all the projects in the projects state and 
-    //a new project with the project title from the projectTitle state
+    //when the form is submitted, toggle is set back to false and the projects state is set 
+    //to all the projects in the projects state and a new project 
     function handleOnSubmit(e) {
         e.preventDefault()
-        setToggleShow(false)
+        setToggleAddButton(false)
         setProjects((prevProjects) => {
             return ([
                 ...prevProjects,
@@ -30,9 +29,7 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
         })
     }
     
-
-    //Each time there is input in the add project form, the state of projectTitle is changed to the input value along with a unique
-    //id and a todo property set to an empty array 
+    //Each time there is input in the add project form, the state of projectTitle is updated
     function handleInput(e) {
         const { value } = e.target
         setProjectTitle({
@@ -43,19 +40,18 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
         })
     }
 
-    //Here we are rendering the projects section of the sidebar which includes the title, each of the titles of the projects and 
-    //either the add project button or the add project form, depending on which toggle state is active
+    //If the project tab last clicked has a type of 'project' then the project tabs are rendered
     return (
         <div className='sidebar-group' id='projects-list'>
             <div className='projects-title'>Projects</div>
             {projects.map(project => {
                 if(project.type === 'project') {
                 return (
-                    <ProjectTitle 
+                    <ProjectTab 
+                        key={uuidv4()} 
                         setProjectId={setProjectId} 
                         setProjects={setProjects} 
                         projects={projects} 
-                        key={uuidv4()} 
                         title={project.title} 
                         id={project.id}
                         filteredProject={filteredProject}
@@ -63,7 +59,7 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
                 )
                 }
             })}
-            {toggleShow && 
+            {toggleAddButton && 
                 <Form onSubmit={handleOnSubmit}>
                     <Form.Control 
                         type='text' 
@@ -72,11 +68,11 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
                     />
                     <div className='button-group'>
                         <button className='add-button' type='submit'>Add</button>
-                        <button className='cancel-button' onClick={() => setToggleShow(false)}>Cancel</button>
+                        <button className='cancel-button' onClick={() => setToggleAddButton(false)}>Cancel</button>
                     </div>
                 </Form>
             }
-            {!toggleShow &&
+            {!toggleAddButton &&
             <button onClick={handleOnClick}>
                 <img className='todo-icon' src='icons/plus.svg'></img>
                 Add Project
