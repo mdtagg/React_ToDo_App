@@ -28,7 +28,7 @@ const Dashboard = ({completed}) => {
             {
                 title:'Today',
                 type: 'upcoming',
-                img: 'icons/inbox.svg',
+                img: 'inbox',
                 id: uuidv4(),
                 todo: [],
                 dates: []
@@ -36,7 +36,7 @@ const Dashboard = ({completed}) => {
             {
                 title: 'This Week',
                 type: 'upcoming',
-                img:'icons/today.svg',
+                img:'week',
                 id: uuidv4(),
                 todo:[],
                 dates: []
@@ -44,7 +44,7 @@ const Dashboard = ({completed}) => {
             {
                 title: 'This Month',
                 type:'upcoming',
-                img:'icons/week.svg',
+                img:'month',
                 id:uuidv4(),
                 todo:[],
                 dates:[]

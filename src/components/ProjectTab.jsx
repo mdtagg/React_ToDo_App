@@ -1,7 +1,5 @@
 
 import { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInbox } from '@fortawesome/free-solid-svg-icons'
 
 const ProjectTab = ({title,id,setProjectId,projects,setProjects,filteredProject}) => {
 
@@ -33,7 +31,7 @@ const ProjectTab = ({title,id,setProjectId,projects,setProjects,filteredProject}
 
     return (
         <button className='project-button' onClick={() => handleOnClick(id)} onMouseEnter={handleEnter} onMouseLeave={handleExit}>
-            <img className='todo-icon' src='icons/todo-list.svg'></img>
+            <img className='todo-icon' src='/icons/todo-list.svg'></img>
                 {title}
             {toggle && 
             <div className='delete-button'>
