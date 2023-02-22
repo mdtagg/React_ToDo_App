@@ -84,7 +84,7 @@ const UpcomingList = (props) => {
 
     return (
         <div className='sidebar-group'>
-            <div className='projects-title'>Upcoming</div>
+            <div className='title'>Upcoming</div>
             {props.projects.map(project => {
                 if(project.type === 'upcoming') {
                     return (

@@ -16,7 +16,8 @@ const Header = (props) => {
                     <>
                         <img className='todo-icon' src='./icons/check.svg'></img>
                         View Completed Tasks
-                    </>}
+                    </>
+                    }
                     {props.completed &&
                     <>
                         <img className='todo-icon' src='./icons/back.svg' ></img>

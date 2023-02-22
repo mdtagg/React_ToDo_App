@@ -2,7 +2,7 @@ import ProjectsList from "./ProjectsList"
 import UpcomingList from "./UpcomingList"
 import TodoList from "./TodoList"
 import UseLocalStorage from "../hooks/UseLocalStorage"
-import { useState,useEffect,createContext } from "react"
+import { useState,useEffect } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
 const Dashboard = ({completed}) => {
@@ -64,7 +64,7 @@ const Dashboard = ({completed}) => {
 
     //sets the todos attached to the last clicked project to the projectTodos state. 
     //If a tab has not been clicked yet or one of the projects has been deleted, projectTodos state
-    //is set to an empty array, otherwise its set to the todos associated with that project
+    //is set to an empty array, otherwise it is set to the todos associated with that project
     useEffect(() => {
         setProjectTodos((projectId === '' || filteredProject == undefined) ? [] : filteredProject.todo)
     },[projectId])

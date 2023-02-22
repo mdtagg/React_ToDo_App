@@ -64,11 +64,8 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
     function handleDateChange(e) {
 
         const dateId = e.target.dataset.id
-        let dateValue = e.target.value.split('-')
-        const temp = dateValue.shift()
-        dateValue.push(temp)
-        dateValue = dateValue.join('/')
-
+        const dateValue = parseDay(e.target.value.split('-'))
+      
         setProjectTodos((prevTodos) => {
             return prevTodos.map(todo => {
                 if(todo.id === dateId) {
@@ -87,12 +84,7 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
     //filtered todo
     const handleCheckbox = (e) => {
         const currentDate = Temporal.Now.plainDateISO()
-        let currentDay = currentDate.toString()
-        let temp = ''
-        currentDay = currentDay.split('-')
-        temp = currentDay.shift()
-        currentDay.push(temp)
-        currentDay = currentDay.join('/')
+        const currentDay = parseDay(currentDate.toString().split('-'))
 
         const taskId = e.target.dataset.id
         const [filteredTodo] = filteredProject.todo.filter(todo => taskId === todo.id)
@@ -107,6 +99,13 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
         handleOnDelete(e)
     }
 
+    const parseDay = (day) => {
+        let temp = ''
+        temp = day.shift()
+        day.push(temp)
+        return day.join('/')
+    }
+
     return (
         <>
         {!filteredProject && projectId === '' &&
@@ -116,7 +115,9 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
 
         {filteredProject &&  
         <div className='todo-list'>
-            <div className='todo-title'>{filteredProject.title}</div>
+            <div className='title'>
+                {filteredProject.title}
+            </div>
             {!filteredProject.todo.length && filteredProject.type === 'upcoming' &&
             <div className='default'>
                 Nothing Due
@@ -129,7 +130,9 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
                             type='checkbox' 
                             onClick={(e) => handleCheckbox(e)} 
                         />
-                        <div className='title'>{todo.title}</div>
+                        <div>
+                            {todo.title}
+                        </div>
                         {todo.date === null && 
                             <input 
                                 data-id={todo.id} 

@@ -13,7 +13,7 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
     const [projectTitle,setProjectTitle] = useState('')
 
     const handleOnClick = () => {
-        setAddButton(true)
+        setToggleAddButton(true)
     }
 
     //when the form is submitted, toggle is set back to false and the projects state is set 
@@ -43,7 +43,7 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
     //If the project tab last clicked has a type of 'project' then the project tabs are rendered
     return (
         <div className='sidebar-group' id='projects-list'>
-            <div className='projects-title'>Projects</div>
+            <div className='title'>Projects</div>
             {projects.map(project => {
                 if(project.type === 'project') {
                 return (
