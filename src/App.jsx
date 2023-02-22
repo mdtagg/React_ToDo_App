@@ -13,9 +13,11 @@ function App() {
     <>
       <Header completed={completed} setCompleted={setCompleted} />
       <Dashboard completed={completed} />
-      <footer>Developed by Michael Tagg 
-          
-          <a href='https://github.com/mdtagg'><img className='todo-icon' src='./icons/github.svg'></img></a>
+      <footer>
+          <div>Developed by Michael Tagg</div> 
+          <a href='https://github.com/mdtagg'>
+            <img className='todo-icon' src='./icons/github.svg'></img>
+          </a>
       </footer>
     </>
     

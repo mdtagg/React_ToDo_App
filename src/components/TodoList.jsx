@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react"
 import Form from 'react-bootstrap/Form';
 import { v4 as uuidv4 } from 'uuid';
+import { Temporal } from '@js-temporal/polyfill';
 
 const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,filteredProject,setCompletedList}) => {
 
@@ -85,9 +86,18 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
     //the project title is added to the filtered todo and the completed state is updated to that 
     //filtered todo
     const handleCheckbox = (e) => {
+        const currentDate = Temporal.Now.plainDateISO()
+        let currentDay = currentDate.toString()
+        let temp = ''
+        currentDay = currentDay.split('-')
+        temp = currentDay.shift()
+        currentDay.push(temp)
+        currentDay = currentDay.join('/')
+
         const taskId = e.target.dataset.id
         const [filteredTodo] = filteredProject.todo.filter(todo => taskId === todo.id)
         filteredTodo.projectTitle = filteredProject.title
+        filteredTodo.currentDate = currentDay
         setCompletedList((prevList) => {
             return [
                 ...prevList,
@@ -142,7 +152,6 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
                         >
                             x
                         </div>}
-                        
                     </Form>
                 )
             })}

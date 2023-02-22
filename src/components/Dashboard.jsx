@@ -108,6 +108,7 @@ const Dashboard = ({completed}) => {
                             <th>Project</th>
                             <th>Task Name</th>
                             <th>Date Completed</th>
+                            <th>Date Due</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -116,6 +117,7 @@ const Dashboard = ({completed}) => {
                             <tr key={uuidv4()}>
                                 <td>{item.projectTitle}</td>
                                 <td>{item.title}</td>
+                                <td>{item.currentDate}</td>
                                 <td>{item.date}</td>
                             </tr>
                         )
