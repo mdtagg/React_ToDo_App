@@ -70,7 +70,6 @@ const UpcomingList = (props) => {
                 return project
             })
         })
-        
     },[props.dates])
 
     //responsible for determining the start and end of the week from the current date

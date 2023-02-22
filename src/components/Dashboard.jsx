@@ -2,7 +2,7 @@ import ProjectsList from "./ProjectsList"
 import UpcomingList from "./UpcomingList"
 import TodoList from "./TodoList"
 import UseLocalStorage from "../hooks/UseLocalStorage"
-import { useState,useEffect } from "react"
+import { useState,useEffect,createContext } from "react"
 import { v4 as uuidv4 } from 'uuid';
 
 const Dashboard = ({completed}) => {
@@ -76,16 +76,16 @@ const Dashboard = ({completed}) => {
             <aside className='todo-sidebar'>
                 <UpcomingList 
                     projects={projects} 
+                    setProjects={setProjects}
                     setProjectId={setProjectId}
                     dates={dates}
                     setDates={setDates}
-                    setProjects={setProjects}
                 />
                 <ProjectsList 
-                    setProjectId={setProjectId} 
                     projects={projects} 
                     setProjects={setProjects} 
                     filteredProject={filteredProject}
+                    setProjectId={setProjectId} 
                 />
             </aside>
             <TodoList 
@@ -97,7 +97,8 @@ const Dashboard = ({completed}) => {
                 filteredProject={filteredProject}
                 setCompletedList={setCompletedList}
             />
-            </main>
+        </main>
+        
             }
             {completed && 
             <div className='completed-container'>
