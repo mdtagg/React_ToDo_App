@@ -56,8 +56,12 @@ const TaskTab = ({filteredProject,setProjectTodos,setCompletedList,projectTodos}
     }
 
     return (
-
-        
+        <>
+        {!filteredProject.todo.length && filteredProject.type === 'upcoming' &&
+            <div className='default'>
+                Nothing Due
+            </div>} 
+            
         <div>{filteredProject.todo.map(todo => {
             return (
                 <Form key={uuidv4()} className='todo-form'>
@@ -95,6 +99,7 @@ const TaskTab = ({filteredProject,setProjectTodos,setCompletedList,projectTodos}
             )
         })}
         </div>
+        </>
     )
 }
 

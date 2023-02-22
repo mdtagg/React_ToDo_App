@@ -22,7 +22,8 @@ const Header = (props) => {
                     <>
                         <img className='todo-icon' src='./icons/back.svg' ></img>
                         Back To Menu
-                    </>}
+                    </>
+                    }
                 </button>
             </div>
         </header>
