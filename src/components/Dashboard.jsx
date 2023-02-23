@@ -14,13 +14,13 @@ const Dashboard = ({completed}) => {
         
         [
             {
-                title: 'test',
+                title: 'Project One',
                 type: 'project',
                 id: uuidv4(),
                 todo:[]
             },
             {
-                title:'test two',
+                title:'Project Two',
                 type:'project',
                 id: uuidv4(),
                 todo:[]

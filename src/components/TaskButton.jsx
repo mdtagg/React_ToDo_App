@@ -43,7 +43,7 @@ const TaskButton = ({setProjectTodos,filteredProject}) => {
             <button className='add-todo' onClick={handleOnClick}>
                 <img 
                     className='todo-icon' 
-                    src='../icons/plus.svg'
+                    src='./icons/plus.svg'
                 >
                 </img>
                 Add Task
