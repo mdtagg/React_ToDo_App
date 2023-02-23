@@ -28,7 +28,7 @@ const Dashboard = ({completed}) => {
             {
                 title:'Today',
                 type: 'upcoming',
-                img: './public/icons/inbox.svg',
+                img: './icons/inbox.svg',
                 id: uuidv4(),
                 todo: [],
                 dates: []
@@ -36,7 +36,7 @@ const Dashboard = ({completed}) => {
             {
                 title: 'This Week',
                 type: 'upcoming',
-                img:'./public/icons/today.svg',
+                img:'./icons/today.svg',
                 id: uuidv4(),
                 todo:[],
                 dates: []
@@ -44,7 +44,7 @@ const Dashboard = ({completed}) => {
             {
                 title: 'This Month',
                 type:'upcoming',
-                img:'./public/icons/week.svg',
+                img:'./icons/week.svg',
                 id:uuidv4(),
                 todo:[],
                 dates:[]
@@ -123,9 +123,10 @@ const Dashboard = ({completed}) => {
                         )
                     })}
                     </tbody>
-                    
                 </table>
             </div>
+           
+            
             }
         </>
     )
