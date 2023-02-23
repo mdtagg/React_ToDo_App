@@ -40,7 +40,7 @@ const TaskButton = ({setProjectTodos,filteredProject}) => {
         <>
         {!toggleForm && filteredProject.type !== 'upcoming' &&
         <div>
-            <button className='add-todo' onClick={handleOnClick}>
+            <button className='add-todo-button' onClick={handleOnClick}>
                 <img 
                     className='todo-icon' 
                     src='./icons/plus.svg'

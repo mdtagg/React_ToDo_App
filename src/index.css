@@ -15,6 +15,10 @@
   height:15vh;
 }
 
+.header-title {
+  font-family: 'Roboto', sans-serif;
+}
+
 .completed-tasks-button {
   font-size:1.25rem;
   border:2px solid black;
@@ -137,15 +141,24 @@ footer {
   height:5vh;
 }
 
+.input-form {
+  margin-top:2rem;
+}
+
+.input-form input {
+  border:2px solid black;
+}
+
 .add-todo-container {
   display:flex;
   flex-direction: column;
   gap:.5rem;
 }
 
-.add-todo-buttons {
+.add-todo-button {
   display:flex;
-  gap:.25rem;
+  justify-content: center;
+  margin-top:2rem;
 }
 
 .todo-list {
@@ -185,6 +198,5 @@ footer {
 .default {
   font-size:2rem;
   margin:auto;
-  border-right:2px solid black;
 }
 

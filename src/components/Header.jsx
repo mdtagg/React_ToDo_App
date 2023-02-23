@@ -9,7 +9,7 @@ const Header = (props) => {
 
     return (
         <header className='header'>
-            <div>Todo List</div>
+            <div className='header-title'>Todo List</div>
             <div>
                 <button onClick={handleClick} className='completed-tasks-button'>
                     {!props.completed && 
