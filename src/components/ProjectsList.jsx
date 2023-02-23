@@ -75,7 +75,7 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
             }
             {!toggleAddButton &&
             <button onClick={handleOnClick}>
-                <img className='todo-icon' src='icons/plus.svg'></img>
+                <img className='todo-icon' src='/public/icons/plus.svg'></img>
                 Add Project
             </button>}
             </div>

@@ -2,9 +2,9 @@
 import { useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { Temporal } from '@js-temporal/polyfill';
-import { ReactComponent as Inbox } from '/icons/inbox.svg'
-import { ReactComponent as Week } from '/icons/today.svg'
-import { ReactComponent as Month } from '/icons/week.svg'
+// import { ReactComponent as Inbox } from '/assets/icons/inbox.svg'
+// import { ReactComponent as Week } from '/assets/icons/today.svg'
+// import { ReactComponent as Month } from '/assets/icons/week.svg'
 
 const UpcomingList = (props) => {
 
@@ -93,13 +93,7 @@ const UpcomingList = (props) => {
                 if(project.type === 'upcoming') {
                     return (
                         <button key={uuidv4()} data-id={project.id} onClick={(e) => handleClick(e)}>
-                            {project.img == 'inbox' && 
-                                <Inbox className='todo-icon' />
-                                }
-                            {project.img === 'week' &&
-                                <Week className='todo-icon'/>}
-                            {project.img === 'month' &&
-                                <Month className='todo-icon'/>}
+                            <img className='todo-icon' src={project.img}></img>
                             {project.title}
                         </button>
                     )
