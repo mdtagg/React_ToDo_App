@@ -72,7 +72,7 @@ const Dashboard = ({completed}) => {
     return (
         <>
         {!completed && 
-        <main className='main'>
+        <main class='flex min-h-main'>
             <aside className='todo-sidebar'>
                 <UpcomingList 
                     projects={projects} 
@@ -99,35 +99,33 @@ const Dashboard = ({completed}) => {
             />
         </main>
         
-            }
-            {completed && 
-            <div className='completed-container'>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Task Name</th>
-                            <th>Date Completed</th>
-                            <th>Date Due</th>
+        }
+        {completed && 
+        <div class='min-h-main flex flex-col p-16 border-black border-2'>
+            <table class='border-black border-1 text-center'>
+                <thead>
+                    <tr class='border-black border-1 text-center'>
+                        <th class='border-black border-1 text-center'>Project</th>
+                        <th class='border-black border-1 text-center'>Task Name</th>
+                        <th class='border-black border-1 text-center'>Date Completed</th>
+                        <th class='border-black border-1 text-center'>Date Due</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {completedList.map(item => {
+                    return (
+                        <tr key={uuidv4()}>
+                            <td class='border-black border-1 text-center'>{item.projectTitle}</td>
+                            <td class='border-black border-1 text-center'>{item.title}</td>
+                            <td class='border-black border-1 text-center'>{item.currentDate}</td>
+                            <td class='border-black border-1 text-center'>{item.date}</td>
                         </tr>
-                    </thead>
-                    <tbody>
-                    {completedList.map(item => {
-                        return (
-                            <tr key={uuidv4()}>
-                                <td>{item.projectTitle}</td>
-                                <td>{item.title}</td>
-                                <td>{item.currentDate}</td>
-                                <td>{item.date}</td>
-                            </tr>
-                        )
-                    })}
-                    </tbody>
-                </table>
-            </div>
-           
-            
-            }
+                    )
+                })}
+                </tbody>
+            </table>
+        </div>
+        }
         </>
     )
 }

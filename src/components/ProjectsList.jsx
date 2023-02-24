@@ -42,8 +42,8 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
 
     //If the project tab last clicked has a type of 'project' then the project tabs are rendered
     return (
-        <div className='sidebar-group' id='projects-list'>
-            <div className='title'>Projects</div>
+        <div class='gap-4' id='projects-list'>
+            <div class='font-bold text-2xl pb-4'>Projects</div>
             <div className='tab-group'>
             {projects.map(project => {
                 if(project.type === 'project') {
@@ -67,15 +67,15 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
                         name='project-title' 
                         onChange={handleInput}
                     />
-                    <div className='button-group'>
-                        <button className='add-button' type='submit'>Add</button>
-                        <button className='cancel-button' onClick={() => setToggleAddButton(false)}>Cancel</button>
+                    <div class='flex gap-2 text-white text-4 font-semibold mt-2'>
+                        <button class='flex w-1/2 bg-green-400 justify-center' type='submit'>Add</button>
+                        <button class='flex w-1/2 bg-red-500 justify-center' onClick={() => setToggleAddButton(false)}>Cancel</button>
                     </div>
                 </Form>
             }
             {!toggleAddButton &&
             <button onClick={handleOnClick}>
-                <img className='todo-icon' src='./icons/plus.svg'></img>
+                <img class='h-5' src='./icons/plus.svg'></img>
                 Add Project
             </button>}
             </div>

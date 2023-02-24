@@ -93,7 +93,7 @@ const UpcomingList = (props) => {
                 if(project.type === 'upcoming') {
                     return (
                         <button key={uuidv4()} data-id={project.id} onClick={(e) => handleClick(e)}>
-                            <img className='todo-icon' src={project.img}></img>
+                            <img class='h-5' src={project.img}></img>
                             {project.title}
                         </button>
                     )

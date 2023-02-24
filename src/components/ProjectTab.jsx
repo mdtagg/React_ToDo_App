@@ -30,8 +30,8 @@ const ProjectTab = ({title,id,setProjectId,projects,setProjects,filteredProject}
     }
 
     return (
-        <button className='project-button' onClick={() => handleOnClick(id)} onMouseEnter={handleEnter} onMouseLeave={handleExit}>
-            <img className='todo-icon' src='./icons/todo-list.svg'></img>
+        <button onClick={() => handleOnClick(id)} onMouseEnter={handleEnter} onMouseLeave={handleExit}>
+            <img class='h-5' src='./icons/todo-list.svg'></img>
                 {title}
             {toggle && 
             <div className='delete-button'>
