@@ -46,17 +46,20 @@ const TaskButton = ({setProjectTodos,filteredProject}) => {
             </button>
         </div>}
         {toggleForm && 
-        <form className='input-form' onSubmit={(e) => handleOnSubmit(e)}>
+        <form class='flex flex-col gap-2' onSubmit={(e) => handleOnSubmit(e)}>
             <input 
+                class='border-black border-2 h-20'
                 type='text' 
                 name='todo-title' 
                 onChange={handleInput} 
-            />
-            <div className='button-group'>
-                <button className='add-button' type='submit'>
+            >
+            </input>
+            
+            <div class='flex gap-2'>
+                <button class='bg-green-500 text-white flex items-center justify-center w-1/2 border-black border-2' type='submit'>
                     Add
                 </button>
-                <button className='cancel-button' onClick={() => setToggleForm(false)}>
+                <button class='bg-red-500 text-white flex items-center justify-center w-1/2 border-black border-2' onClick={() => setToggleForm(false)}>
                     Cancel
                 </button>
             </div>
