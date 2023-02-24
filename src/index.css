@@ -1,4 +1,4 @@
-
+/* 
 *,*::after,*::before {
   box-sizing: border-box;
   margin:0;
@@ -149,12 +149,6 @@ footer {
   border:2px solid black;
 }
 
-.add-todo-container {
-  display:flex;
-  flex-direction: column;
-  gap:.5rem;
-}
-
 .add-todo-button {
   display:flex;
   justify-content: center;
@@ -199,4 +193,4 @@ footer {
   font-size:2rem;
   margin:auto;
 }
-
+ */
