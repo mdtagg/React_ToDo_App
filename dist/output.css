@@ -554,6 +554,10 @@ video {
   height: 0.75rem;
 }
 
+.h-20 {
+  height: 5rem;
+}
+
 .min-h-footer {
   min-height: 5vh;
 }
