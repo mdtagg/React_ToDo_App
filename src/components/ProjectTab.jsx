@@ -30,11 +30,19 @@ const ProjectTab = ({title,id,setProjectId,projects,setProjects,filteredProject}
     }
 
     return (
-        <button onClick={() => handleOnClick(id)} onMouseEnter={handleEnter} onMouseLeave={handleExit}>
-            <img class='h-5' src='./icons/todo-list.svg'></img>
-                {title}
+        <button 
+            class='flex justify-between items-center gap-3 w-full border-rounded border-2 border-black p-1 bg-gray-100 hover:bg-gray-500' 
+            onClick={() => handleOnClick(id)} 
+            onMouseEnter={handleEnter} 
+            onMouseLeave={handleExit}
+        >
+            <div class='flex items-center gap-3'>
+                <img class='h-5'src='./icons/todo-list.svg'></img>
+                <div>{title}</div>
+            </div>
+            
             {toggle && 
-            <div className='delete-button'>
+            <div class='flex justify-end font-bold cursor-pointer'>
                 <div data-id={id} onClick={(e) => handleOnDelete(e)}>x</div>
             </div>
             }

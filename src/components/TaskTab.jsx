@@ -1,5 +1,4 @@
 import { Temporal } from "@js-temporal/polyfill"
-import { Form } from "react-bootstrap"
 import { v4 as uuidv4 } from 'uuid';
 
 const TaskTab = ({filteredProject,setProjectTodos,setCompletedList,projectTodos}) => {
@@ -58,44 +57,46 @@ const TaskTab = ({filteredProject,setProjectTodos,setCompletedList,projectTodos}
     return (
         <>
         {!filteredProject.todo.length && filteredProject.type === 'upcoming' &&
-            <div className='default'>
+            <div className='text-4xl m-auto'>
                 Nothing Due
             </div>} 
-
-        <div>{filteredProject.todo.map(todo => {
+        <div>
+        {filteredProject.todo.map(todo => {
             return (
-                <Form key={uuidv4()} className='todo-form'>
-                    <Form.Check 
+                <form key={uuidv4()} class='flex mb-2 p-1 bg-gray-300 justify-between items-center'>
+                    <input 
+                        class='grow h-5'
                         data-id={todo.id}
                         type='checkbox' 
                         onClick={(e) => handleCheckbox(e)} 
                     />
-                    <div>
+                    <div class='w-1/2 grow'>
                         {todo.title}
                     </div>
                     {todo.date === null && 
                         <input 
                             data-id={todo.id} 
-                            className='task-date' 
+                            class='grow border-black rounded-sm border-2 bg-white' 
                             type='date' 
                             onChange={(e) => handleDateChange(e)}
                         >
                         </input>
                     }
                     {todo.date !== null && 
-                        <div className='date-button'>
+                        <div className='border-black grow inline border-2 bg-white rounded-sm text-center cursor-pointer'>
                             {todo.date}
                         </div>
                     }
                     {filteredProject.type !== 'upcoming' && 
-                    <div 
-                        data-id={todo.id} 
-                        className='delete-button' 
-                        onClick={(e) => handleOnDelete(e)}
-                    >
-                    x
+                    <div class='grow flex font-bold cursor-pointer justify-end' >
+                        <div 
+                            data-id={todo.id}  
+                            onClick={(e) => handleOnDelete(e)}
+                        >
+                            x
+                        </div>
                     </div>}
-                </Form>
+                </form>
             )
         })}
         </div>

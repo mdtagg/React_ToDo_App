@@ -72,8 +72,8 @@ const Dashboard = ({completed}) => {
     return (
         <>
         {!completed && 
-        <main class='flex min-h-main'>
-            <aside className='todo-sidebar'>
+        <main class='flex min-h-main border-black border-2'>
+            <aside class='w-1/5 bg-gray-300 flex flex-col text-xl font-medium p-6 gap-3 border-r-2 border-black'>
                 <UpcomingList 
                     projects={projects} 
                     setProjects={setProjects}
@@ -102,23 +102,23 @@ const Dashboard = ({completed}) => {
         }
         {completed && 
         <div class='min-h-main flex flex-col p-16 border-black border-2'>
-            <table class='border-black border-1 text-center'>
+            <table class='border-black border-2 text-center'>
                 <thead>
-                    <tr class='border-black border-1 text-center'>
-                        <th class='border-black border-1 text-center'>Project</th>
-                        <th class='border-black border-1 text-center'>Task Name</th>
-                        <th class='border-black border-1 text-center'>Date Completed</th>
-                        <th class='border-black border-1 text-center'>Date Due</th>
+                    <tr class='border-black border-2 text-center'>
+                        <th class='border-black border-2 text-center'>Project</th>
+                        <th class='border-black border-2 text-center'>Task Name</th>
+                        <th class='border-black border-2 text-center'>Date Completed</th>
+                        <th class='border-black border-2 text-center'>Date Due</th>
                     </tr>
                 </thead>
                 <tbody>
                 {completedList.map(item => {
                     return (
                         <tr key={uuidv4()}>
-                            <td class='border-black border-1 text-center'>{item.projectTitle}</td>
-                            <td class='border-black border-1 text-center'>{item.title}</td>
-                            <td class='border-black border-1 text-center'>{item.currentDate}</td>
-                            <td class='border-black border-1 text-center'>{item.date}</td>
+                            <td class='border-black border-2 text-center'>{item.projectTitle}</td>
+                            <td class='border-black border-2 text-center'>{item.title}</td>
+                            <td class='border-black border-2 text-center'>{item.currentDate}</td>
+                            <td class='border-black border-2 text-center'>{item.date}</td>
                         </tr>
                     )
                 })}

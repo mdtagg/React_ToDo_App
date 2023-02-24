@@ -40,37 +40,27 @@ const TaskButton = ({setProjectTodos,filteredProject}) => {
         <>
         {!toggleForm && filteredProject.type !== 'upcoming' &&
         <div>
-            <button onClick={handleOnClick}>
-                <img 
-                    class='h-5' 
-                    src='./icons/plus.svg'
-                >
-                </img>
-                Add Task
+            <button class='flex items-center font-normal gap-2 w-full border-rounded p-1 text-xl hover:gray-400' onClick={handleOnClick}>
+                <img class='h-5' src='./icons/plus.svg'></img>
+                <div>Add Task</div>
             </button>
         </div>}
         {toggleForm && 
-        <Form className='input-form' onSubmit={(e) => handleOnSubmit(e)}>
-            <Form.Control 
+        <form className='input-form' onSubmit={(e) => handleOnSubmit(e)}>
+            <input 
                 type='text' 
                 name='todo-title' 
                 onChange={handleInput} 
             />
             <div className='button-group'>
-                <button 
-                    className='add-button' 
-                    type='submit'
-                >
+                <button className='add-button' type='submit'>
                     Add
                 </button>
-                <button 
-                    className='cancel-button' 
-                    onClick={() => setToggleForm(false)}
-                >
+                <button className='cancel-button' onClick={() => setToggleForm(false)}>
                     Cancel
                 </button>
             </div>
-        </Form>}
+        </form>}
         </>
         
     )

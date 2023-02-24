@@ -22,13 +22,13 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
     return (
         <>
         {!filteredProject && projectId === '' &&
-        <div className='default'>
+        <div className='text-4xl text-center m-auto'>
             Nothing due yet! Please add more tasks to a project
         </div>}
 
         {filteredProject &&  
-        <div className='todo-list'>
-            <div className='title'>{filteredProject.title}</div>
+        <div class='flex flex-col gap-3 w-1/2 mx-auto p-8' >
+            <div class='text-2xl font-bold'>{filteredProject.title}</div>
             <TaskTab
                 filteredProject={filteredProject}
                 setProjectTodos={setProjectTodos}
