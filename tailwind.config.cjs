@@ -2,12 +2,14 @@
 module.exports = {
   content: ["./src/**/*.{html,js,jsx}"],
   theme: {
-    extend: {},
+    fontFamily: {
+      'kalam':['"Kalam"','cursive']
+    },
     minHeight: {
       'main': '80vh',
       'header':'15vh',
       'footer':'5vh'
-    },
+      }
   },
   plugins: [],
 }

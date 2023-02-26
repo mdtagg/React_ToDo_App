@@ -31,7 +31,7 @@ const ProjectTab = ({title,id,setProjectId,projects,setProjects,filteredProject}
 
     return (
         <button 
-            class='flex justify-between items-center gap-3 w-full border-rounded border-2 border-black p-1 bg-gray-100 hover:bg-gray-500' 
+            class='flex justify-between items-center rounded gap-3 w-full border-rounded border-2 border-black p-1 bg-gray-100 hover:bg-gray-500' 
             onClick={() => handleOnClick(id)} 
             onMouseEnter={handleEnter} 
             onMouseLeave={handleExit}

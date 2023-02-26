@@ -42,8 +42,8 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
 
     //If the project tab last clicked has a type of 'project' then the project tabs are rendered
     return (
-        <div class='flex flex-col gap-4' >
-            <div class='font-bold text-2xl'>Projects</div>
+        <section class='flex flex-col gap-3' >
+            <h2 class='font-bold text-2xl'>Projects</h2>
             <div class='flex flex-col gap-2'>
             {projects.map(project => {
                 if(project.type === 'project') {
@@ -61,7 +61,7 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
                 }
             })}
             </div>
-            <div>
+            <div class='mt-3'>
             {toggleAddButton && 
                 <form onSubmit={handleOnSubmit}>
                     <input
@@ -72,21 +72,18 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
                     >
                     </input>
                     <div class='flex gap-2 text-white text-4 font-semibold mt-2'>
-                        <button class='flex border-black border-2 w-1/2 bg-green-500 justify-center' type='submit'>Add</button>
-                        <button class='flex border-black border-2 w-1/2 bg-red-500 justify-center' onClick={() => setToggleAddButton(false)}>Cancel</button>
+                        <button class='flex border-black rounded border-2 w-1/2 bg-green-500 justify-center' type='submit'>Add</button>
+                        <button class='flex border-black border-2 rounded w-1/2 bg-red-500 justify-center' onClick={() => setToggleAddButton(false)}>Cancel</button>
                     </div>
                 </form>
             }
             {!toggleAddButton &&
-                <button 
-                    class='flex items-center gap-3 w-full border-rounded border-2 border-black p-1 bg-gray-100 hover:bg-gray-400 justify-center' 
-                    onClick={handleOnClick}
-                >
+                <button class='flex items-center rounded gap-3 w-full border-rounded border-2 border-black p-1 bg-gray-100 hover:bg-gray-400 justify-center' onClick={handleOnClick}>
                     <img class='h-5' src='./icons/plus.svg'></img>
                     Add Project
                 </button>}
             </div>
-        </div>
+        </section>
     )
 }
 

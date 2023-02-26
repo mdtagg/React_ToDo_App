@@ -57,22 +57,21 @@ const TaskTab = ({filteredProject,setProjectTodos,setCompletedList,projectTodos}
     return (
         <>
         {!filteredProject.todo.length && filteredProject.type === 'upcoming' &&
-            <div className='text-4xl m-auto'>
-                Nothing Due
-            </div>} 
+        <div className='text-4xl m-auto'>Nothing Due</div>} 
+
         <div>
         {filteredProject.todo.map(todo => {
             return (
-                <form key={uuidv4()} class='flex mb-2 p-1 bg-gray-300 justify-between items-center'>
+                <form key={uuidv4()} class='flex mb-2 bg-gray-300 p-2 justify-between items-center'>
                     <input 
                         class='grow h-5'
                         data-id={todo.id}
                         type='checkbox' 
                         onClick={(e) => handleCheckbox(e)} 
                     />
-                    <div class='w-1/2 grow'>
+                    <p class='w-1/2 grow m-0'>
                         {todo.title}
-                    </div>
+                    </p>
                     {todo.date === null && 
                         <input 
                             data-id={todo.id} 
@@ -83,18 +82,15 @@ const TaskTab = ({filteredProject,setProjectTodos,setCompletedList,projectTodos}
                         </input>
                     }
                     {todo.date !== null && 
-                        <div className='border-black grow inline border-2 bg-white rounded-sm text-center cursor-pointer'>
+                        <p className='border-black grow inline border-2 bg-white rounded-sm text-center cursor-pointer m-0'>
                             {todo.date}
-                        </div>
+                        </p>
                     }
                     {filteredProject.type !== 'upcoming' && 
-                    <div class='grow flex font-bold cursor-pointer justify-end' >
-                        <div 
-                            data-id={todo.id}  
-                            onClick={(e) => handleOnDelete(e)}
-                        >
+                    <div class='grow flex font-bold justify-end' >
+                        <button data-id={todo.id} onClick={(e) => handleOnDelete(e)}>
                             x
-                        </div>
+                        </button>
                     </div>}
                 </form>
             )

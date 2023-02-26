@@ -86,32 +86,26 @@ const UpcomingList = (props) => {
     }
 
     return (
-        <div class='flex flex-col'>
-            <div class='font-bold text-2xl pb-4'>Upcoming</div>
+        <section class='flex flex-col gap-3'>
+            <h2 class='font-bold text-2xl'>Upcoming</h2>
             <div class='flex flex-col gap-2 items-center justify-center'>
             {props.projects.map(project => {
                 if(project.type === 'upcoming') {
                     return (
                         <button 
-                            class='flex items-center gap-3 w-full border-rounded p-1 bg-gray-100 border-2 border-black hover:bg-gray-500'
+                            class='flex items-center gap-3 w-full border-rounded p-1 bg-gray-100 border-2 border-black rounded hover:bg-gray-500'
                             key={uuidv4()} 
                             data-id={project.id} 
                             onClick={(e) => handleClick(e)}
                         >
-                            <img 
-                                class='h-5 object-contain w-5' 
-                                src={project.img}
-                            >
-                            </img>
-                            <div>
-                                {project.title}
-                            </div>
+                            <img class='h-5 object-contain w-5' src={project.img}></img>
+                            <p class='m-0'>{project.title}</p>
                         </button>
                     )
                 }
             })}
             </div>
-        </div>
+        </section>
         
     )
 }

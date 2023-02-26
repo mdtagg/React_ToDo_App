@@ -42,7 +42,7 @@ const TaskButton = ({setProjectTodos,filteredProject}) => {
         <div>
             <button class='flex items-center font-normal gap-2 w-full border-rounded p-1 text-xl hover:gray-400' onClick={handleOnClick}>
                 <img class='h-5' src='./icons/plus.svg'></img>
-                <div>Add Task</div>
+                <div class='opacity-100 hover:opacity-50'>Add Task</div>
             </button>
         </div>}
         {toggleForm && 
@@ -59,7 +59,7 @@ const TaskButton = ({setProjectTodos,filteredProject}) => {
                 <button class='bg-green-500 text-white flex items-center justify-center w-1/2 border-black border-2' type='submit'>
                     Add
                 </button>
-                <button class='bg-red-500 text-white flex items-center justify-center w-1/2 border-black border-2' onClick={() => setToggleForm(false)}>
+                <button class=' bg-red-500 text-white flex items-center justify-center w-1/2 border-black border-2' onClick={() => setToggleForm(false)}>
                     Cancel
                 </button>
             </div>
