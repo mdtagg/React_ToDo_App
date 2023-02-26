@@ -21,9 +21,13 @@ button:hover {
   }
 
 table,tr,td,th {
-    border:1px solid black;
+    border:$thick-border;
     text-align: center;
   }
+
+p {
+  margin:0;
+}
   
 .header {
     background-color: red;

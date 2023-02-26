@@ -42,8 +42,8 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
 
     //If the project tab last clicked has a type of 'project' then the project tabs are rendered
     return (
-        <div className='sidebar-group' id='projects-list'>
-            <div className='title'>Projects</div>
+        <section className='sidebar-group' id='projects-list'>
+            <h2 className='title'>Projects</h2>
             <div className='tab-group'>
             {projects.map(project => {
                 if(project.type === 'project') {
@@ -76,10 +76,10 @@ const ProjectsList = ({projects,setProjects,setProjectId,filteredProject}) => {
             {!toggleAddButton &&
             <button onClick={handleOnClick}>
                 <img className='todo-icon' src='./icons/plus.svg'></img>
-                Add Project
+                <p>Add Project</p>
             </button>}
             </div>
-        </div>
+        </section>
     )
 }
 

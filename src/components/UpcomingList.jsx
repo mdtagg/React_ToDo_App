@@ -2,9 +2,6 @@
 import { useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import { Temporal } from '@js-temporal/polyfill';
-// import { ReactComponent as Inbox } from '/assets/icons/inbox.svg'
-// import { ReactComponent as Week } from '/assets/icons/today.svg'
-// import { ReactComponent as Month } from '/assets/icons/week.svg'
 
 const UpcomingList = (props) => {
 
@@ -86,8 +83,8 @@ const UpcomingList = (props) => {
     }
 
     return (
-        <div className='sidebar-group'>
-            <div className='title'>Upcoming</div>
+        <section className='sidebar-group'>
+            <h2 className='title'>Upcoming</h2>
             <div className='tab-group'>
             {props.projects.map(project => {
                 if(project.type === 'upcoming') {
@@ -100,7 +97,7 @@ const UpcomingList = (props) => {
                 }
             })}
             </div>
-        </div>
+        </section>
         
     )
 }

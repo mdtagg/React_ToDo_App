@@ -27,8 +27,8 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
         </div>}
 
         {filteredProject &&  
-        <div className='todo-list'>
-            <div className='title'>{filteredProject.title}</div>
+        <section className='todo-list'>
+            <h2 className='title'>{filteredProject.title}</h2>
             <TaskTab
                 filteredProject={filteredProject}
                 setProjectTodos={setProjectTodos}
@@ -39,7 +39,7 @@ const TodoList = ({projects,setProjects,projectTodos,setProjectTodos,projectId,f
                 setProjectTodos={setProjectTodos}
                 filteredProject={filteredProject}
             />
-        </div>}
+        </section>}
         </>
     )
 }
